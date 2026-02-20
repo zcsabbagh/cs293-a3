@@ -1,0 +1,5 @@
+# Large data files (>100MB, exceed GitHub limit)
+# Download from: https://huggingface.co/datasets/allenai/mathfish
+# Or get from shared team files
+mathfish_train.jsonl
+*.xlsx
