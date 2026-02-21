@@ -3,6 +3,6 @@
 # Or get from shared team files
 mathfish_train.jsonl
 *.xlsx
+.env
 
-# Annotation outputs (local per-annotator)
-annotations/*_annotations.jsonl
+# its fine to push each of our annotator files, this is ideal actually

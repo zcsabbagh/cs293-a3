@@ -142,7 +142,38 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 This is NOT an LLM -- it's a simple text matching heuristic. The assignment specifically asks for at least one non-LLM approach.
 
-### Model 2: Gemini (e.g., Gemini 1.5 Pro or 2.0 Flash)
+#### Results
+
+All benchmark results live in `RESULTS.md`.
+
+#### Scripts
+
+Run TF-IDF baseline (publisher labels):
+
+```bash
+python3 benchmark.py tfidf --k 1 --output preds/tfidf_k1.jsonl
+python3 benchmark.py eval --preds preds/tfidf_k1.jsonl
+
+python3 benchmark.py tfidf --k 3 --output preds/tfidf_k3.jsonl
+python3 benchmark.py eval --preds preds/tfidf_k3.jsonl
+
+python3 benchmark.py tfidf --k 5 --output preds/tfidf_k5.jsonl
+python3 benchmark.py eval --preds preds/tfidf_k5.jsonl
+```
+
+Run LLM baselines (publisher labels):
+
+```bash
+python3 llm_benchmark.py all --output-dir preds --results results/llm_results.json
+```
+
+Run IRR (Krippendorff’s alpha):
+
+```bash
+python3 irr.py --output results/irr.json
+```
+
+### Model 2: Gemini (gemini-3.1-pro-preview)
 
 Zero-shot prompt:
 
@@ -158,11 +189,11 @@ Problem: {problem_text}
 Return ONLY a JSON array of standard codes, e.g. ["4.NBT.A.1", "4.OA.A.3"]
 ```
 
-### Model 3: OpenAI (GPT-4o or GPT-4o-mini)
+### Model 3: OpenAI (gpt-5.2)
 
 Same prompt as above, different model. Compare cost vs accuracy tradeoff.
 
-### Model 4: Claude (Sonnet or Haiku)
+### Model 4: Claude (claude-sonnet-4-6)
 
 Same prompt as above. Now you have 3 LLMs + 1 lexical baseline = 4 models total (assignment asks for 3, we're doing 4).
 
