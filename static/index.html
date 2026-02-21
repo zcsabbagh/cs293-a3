@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
-  window.MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] } };
+  window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] } };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 <style>
@@ -789,10 +789,12 @@ function escAttr(s) { return escHtml(s).replace(/'/g, '&#39;'); }
 
 function formatProblemText(text) {
   if (!text) return '';
-  // Keep $ for MathJax, escape HTML, convert newlines
+  const unesc = m => m.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
   let safe = escHtml(text)
-    .replace(/\$\$(.*?)\$\$/g, (_, m) => `$$${m.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')}$$`)
-    .replace(/\$(.*?)\$/g, (_, m) => `$${m.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')}$`);
+    .replace(/\$\$(.*?)\$\$/g, (_, m) => `$$${unesc(m)}$$`)
+    .replace(/\$(.*?)\$/g, (_, m) => `$${unesc(m)}$`)
+    .replace(/\\\((.*?)\\\)/g, (_, m) => `\\(${unesc(m)}\\)`)
+    .replace(/\\\[(.*?)\\\]/g, (_, m) => `\\[${unesc(m)}\\]`);
   return safe;
 }
 
