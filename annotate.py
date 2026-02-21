@@ -39,6 +39,7 @@ class AnnotationHandler(SimpleHTTPRequestHandler):
                         "text": p["text"],
                         "source": p.get("source", ""),
                         "metadata": p.get("metadata", {}),
+                        "elements": p.get("elements", {}),
                         "num_problems": p.get("num_problems", 1),
                         "is_shared": pid in self.server.shared_ids,
                     })

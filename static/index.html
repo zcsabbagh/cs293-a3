@@ -398,6 +398,18 @@ body {
 .dot.current { background: var(--accent); transform: scale(1.4); }
 .dot.done { background: var(--success); }
 .dot.skipped { background: var(--skip-color); }
+
+.embedded-element { margin: 0.75rem 0; }
+.embedded-element table {
+  border-collapse: collapse; width: 100%;
+  font-size: 0.9rem; line-height: 1.6;
+}
+.embedded-element td, .embedded-element th {
+  border: 1px solid var(--border); padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.embedded-element th { background: var(--border-light); font-weight: 600; }
+.embedded-element img { max-width: 100%; height: auto; border-radius: var(--radius-sm); }
 </style>
 </head>
 <body>
@@ -500,7 +512,7 @@ function render() {
           <div class="badge badge-source">${escHtml(problem.source)}</div>
           ${existing ? (existing.skipped ? '<div class="badge badge-skipped">Skipped</div>' : '<div class="badge badge-done">Done</div>') : ''}
         </div>
-        <div class="problem-text" id="problem-text">${formatProblemText(problem.text)}</div>
+        <div class="problem-text" id="problem-text">${formatProblemText(problem.text, problem.elements)}</div>
         <div class="problem-nav">
           <div class="problem-nav-dots">
             ${state.problems.map((p, i) => {
@@ -787,7 +799,7 @@ function escHtml(s) {
 }
 function escAttr(s) { return escHtml(s).replace(/'/g, '&#39;'); }
 
-function formatProblemText(text) {
+function formatProblemText(text, elements) {
   if (!text) return '';
   const unesc = m => m.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
   let safe = escHtml(text)
@@ -795,6 +807,12 @@ function formatProblemText(text) {
     .replace(/\$(.*?)\$/g, (_, m) => `$${unesc(m)}$`)
     .replace(/\\\((.*?)\\\)/g, (_, m) => `\\(${unesc(m)}\\)`)
     .replace(/\\\[(.*?)\\\]/g, (_, m) => `\\[${unesc(m)}\\]`);
+  if (elements) {
+    for (const [placeholder, html] of Object.entries(elements)) {
+      const escaped = escHtml(placeholder);
+      safe = safe.replace(escaped, `<div class="embedded-element">${html}</div>`);
+    }
+  }
   return safe;
 }
 
