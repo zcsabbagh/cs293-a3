@@ -3,3 +3,6 @@
 # Or get from shared team files
 mathfish_train.jsonl
 *.xlsx
+
+# Annotation outputs (local per-annotator)
+annotations/*_annotations.jsonl

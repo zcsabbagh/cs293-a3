@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MathFish Annotator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #F5F3ED;
+  --bg-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  --surface: #FFFFFF;
+  --surface-raised: #FEFDFB;
+  --surface-hover: #FFF9EF;
+  --text: #1C1917;
+  --text-secondary: #57534E;
+  --text-tertiary: #A8A29E;
+  --accent: #B45309;
+  --accent-dark: #7C2D12;
+  --accent-light: #FEF3C7;
+  --accent-bg: #FFFBEB;
+  --success: #15803D;
+  --success-light: #DCFCE7;
+  --skip-color: #6366F1;
+  --skip-light: #E0E7FF;
+  --danger: #DC2626;
+  --border: #DAD7D0;
+  --border-light: #EDEBE6;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font-display: 'Young Serif', Georgia, serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --shadow-sm: 0 1px 2px rgba(28,25,23,0.05);
+  --shadow: 0 2px 8px rgba(28,25,23,0.07), 0 1px 2px rgba(28,25,23,0.04);
+  --shadow-lg: 0 8px 24px rgba(28,25,23,0.1), 0 2px 8px rgba(28,25,23,0.04);
+  --shadow-glow: 0 0 0 3px rgba(180,83,9,0.15);
+  --transition: 180ms ease;
+}
+
+html { font-size: 15px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  background-image: var(--bg-grain);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ---- TOPBAR ---- */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0.75rem 1.5rem;
+  display: flex; align-items: center; gap: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+.topbar-logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem; color: var(--accent-dark);
+  white-space: nowrap;
+}
+.topbar-logo span { color: var(--text-tertiary); font-family: var(--font-body); font-size: 0.8rem; margin-left: 0.5rem; }
+.progress-wrap { flex: 1; display: flex; align-items: center; gap: 0.75rem; }
+.progress-bar-outer {
+  flex: 1; height: 8px; background: var(--border-light);
+  border-radius: 99px; overflow: hidden; max-width: 400px;
+}
+.progress-bar-inner {
+  height: 100%; background: linear-gradient(90deg, var(--accent), #D97706);
+  border-radius: 99px; transition: width 0.4s ease;
+}
+.progress-text { font-size: 0.85rem; color: var(--text-secondary); font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.annotator-badge {
+  background: var(--accent-light); color: var(--accent-dark);
+  padding: 0.3rem 0.75rem; border-radius: 99px;
+  font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+}
+
+/* ---- LAYOUT ---- */
+.main-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 400px) 1fr;
+  min-height: calc(100vh - 56px);
+}
+@media (max-width: 900px) {
+  .main-layout { grid-template-columns: 1fr; }
+  .problem-panel { max-height: 40vh; }
+}
+
+/* ---- PROBLEM PANEL ---- */
+.problem-panel {
+  background: var(--surface);
+  border-right: 1px solid var(--border-light);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.problem-header { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.problem-number {
+  font-family: var(--font-display); font-size: 1.1rem; color: var(--text);
+}
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 0.15rem 0.5rem; border-radius: 99px;
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.badge-shared { background: var(--accent-light); color: var(--accent-dark); }
+.badge-unique { background: #E0E7FF; color: #3730A3; }
+.badge-source { background: var(--border-light); color: var(--text-secondary); }
+.badge-done { background: var(--success-light); color: var(--success); }
+.badge-skipped { background: var(--skip-light); color: var(--skip-color); }
+
+.problem-text {
+  font-size: 0.95rem; line-height: 1.75;
+  white-space: pre-wrap; word-wrap: break-word;
+  flex: 1;
+}
+.problem-text p { margin-bottom: 0.5em; }
+
+/* ---- SELECTION PANEL ---- */
+.selection-panel {
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+
+.breadcrumb {
+  display: flex; align-items: center; gap: 0.4rem;
+  margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.breadcrumb-item {
+  font-size: 0.8rem; color: var(--text-tertiary);
+  cursor: pointer; transition: color var(--transition);
+}
+.breadcrumb-item:hover { color: var(--accent); }
+.breadcrumb-item.active { color: var(--text); font-weight: 600; cursor: default; }
+.breadcrumb-sep { color: var(--text-tertiary); font-size: 0.7rem; }
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem; color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.step-subtitle {
+  color: var(--text-secondary); font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ---- SEARCH ---- */
+.search-container { position: relative; margin-bottom: 1.25rem; }
+.search-input {
+  width: 100%; padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--surface); font-family: var(--font-body);
+  font-size: 0.9rem; outline: none; transition: all var(--transition);
+}
+.search-input:focus { border-color: var(--accent); box-shadow: var(--shadow-glow); }
+.search-icon {
+  position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%);
+  color: var(--text-tertiary); font-size: 0.9rem; pointer-events: none;
+}
+.search-results {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-lg);
+  max-height: 300px; overflow-y: auto; z-index: 50;
+  margin-top: 4px;
+}
+.search-result-item {
+  padding: 0.6rem 1rem; cursor: pointer;
+  border-bottom: 1px solid var(--border-light);
+  transition: background var(--transition);
+}
+.search-result-item:hover { background: var(--surface-hover); }
+.search-result-item:last-child { border-bottom: none; }
+.search-result-code { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+.search-result-desc { font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.search-empty { padding: 1rem; color: var(--text-tertiary); text-align: center; font-size: 0.85rem; }
+
+/* ---- SELECTED CHIPS ---- */
+.selected-section { margin-bottom: 1.25rem; }
+.selected-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); margin-bottom: 0.5rem; }
+.selected-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  background: var(--accent-light); color: var(--accent-dark);
+  padding: 0.25rem 0.6rem; border-radius: 99px;
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
+}
+.chip-remove {
+  cursor: pointer; opacity: 0.6; transition: opacity var(--transition);
+  font-family: var(--font-body); font-size: 0.9rem; line-height: 1;
+}
+.chip-remove:hover { opacity: 1; }
+
+/* ---- GRADE GRID ---- */
+.grade-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.75rem; margin-bottom: 1rem;
+}
+.grade-card {
+  background: var(--surface); border: 2px solid var(--border-light);
+  border-radius: var(--radius); padding: 1.25rem 0.75rem;
+  text-align: center; cursor: pointer;
+  transition: all var(--transition);
+  display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+}
+.grade-card:hover {
+  border-color: var(--accent); background: var(--surface-hover);
+  box-shadow: var(--shadow); transform: translateY(-2px);
+}
+.grade-card-number {
+  font-family: var(--font-display); font-size: 2rem; color: var(--text);
+  line-height: 1;
+}
+.grade-card-name { font-size: 0.72rem; color: var(--text-secondary); font-weight: 500; }
+.grade-card-count { font-size: 0.65rem; color: var(--text-tertiary); }
+
+.grade-section-label {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-tertiary);
+  margin: 1.25rem 0 0.5rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* ---- DOMAIN CARDS ---- */
+.domain-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.domain-card {
+  background: var(--surface); border: 2px solid var(--border-light);
+  border-radius: var(--radius); padding: 1rem 1.25rem;
+  cursor: pointer; transition: all var(--transition);
+}
+.domain-card:hover {
+  border-color: var(--accent); background: var(--surface-hover);
+  box-shadow: var(--shadow); transform: translateY(-1px);
+}
+.domain-card-header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.25rem; }
+.domain-code { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 500; color: var(--accent); }
+.domain-name { font-family: var(--font-display); font-size: 1.05rem; }
+.domain-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+
+/* ---- STANDARDS ---- */
+.cluster-group { margin-bottom: 1.5rem; }
+.cluster-header {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding-bottom: 0.5rem; margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-light);
+}
+.cluster-code { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+.cluster-desc { font-size: 0.85rem; color: var(--text); font-weight: 500; flex: 1; }
+.cluster-type-badge {
+  font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 0.15rem 0.5rem; border-radius: 99px; white-space: nowrap;
+}
+.cluster-type-major { background: #FEF3C7; color: #92400E; }
+.cluster-type-supporting { background: #E0E7FF; color: #3730A3; }
+.cluster-type-additional { background: #F3E8FF; color: #6B21A8; }
+
+.standard-item {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.7rem 0.75rem; margin-bottom: 0.35rem;
+  border-radius: var(--radius-sm); cursor: pointer;
+  transition: all var(--transition); border: 2px solid transparent;
+}
+.standard-item:hover { background: var(--surface-hover); }
+.standard-item.selected { background: var(--accent-bg); border-color: var(--accent); }
+
+.standard-checkbox {
+  width: 20px; height: 20px; min-width: 20px;
+  border: 2px solid var(--border); border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition); margin-top: 2px;
+  background: var(--surface);
+}
+.standard-item.selected .standard-checkbox {
+  background: var(--accent); border-color: var(--accent);
+}
+.standard-checkbox-check { display: none; color: white; font-size: 0.7rem; font-weight: 700; }
+.standard-item.selected .standard-checkbox-check { display: block; }
+
+.standard-info { flex: 1; }
+.standard-code-label { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500; color: var(--accent-dark); }
+.standard-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin-top: 2px; }
+
+.sub-standard-item {
+  margin-left: 2.5rem; padding: 0.4rem 0.75rem;
+  font-size: 0.8rem; border-left: 2px solid var(--border-light);
+}
+
+/* ---- ADD MORE LINK ---- */
+.add-more {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  color: var(--accent); font-size: 0.85rem; font-weight: 500;
+  cursor: pointer; margin-top: 0.75rem; padding: 0.4rem 0;
+  transition: color var(--transition);
+}
+.add-more:hover { color: var(--accent-dark); }
+
+/* ---- REVIEW ---- */
+.review-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.review-standard { display: flex; gap: 0.75rem; padding: 0.5rem 0; }
+.review-standard + .review-standard { border-top: 1px solid var(--border-light); }
+.review-standard-code { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500; color: var(--accent); min-width: 100px; }
+.review-standard-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+.notes-field {
+  width: 100%; min-height: 80px; padding: 0.75rem;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: 0.9rem;
+  resize: vertical; outline: none; transition: border-color var(--transition);
+}
+.notes-field:focus { border-color: var(--accent); box-shadow: var(--shadow-glow); }
+
+/* ---- ACTION BAR ---- */
+.action-bar {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding-top: 1.25rem; margin-top: auto;
+  border-top: 1px solid var(--border-light);
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.6rem 1.25rem; border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; border: none; transition: all var(--transition);
+}
+.btn-primary {
+  background: var(--accent); color: white;
+  box-shadow: 0 1px 3px rgba(180,83,9,0.3);
+}
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 3px 8px rgba(180,83,9,0.3); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.btn-secondary {
+  background: var(--surface); color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: var(--surface-hover); color: var(--text); }
+.btn-skip { background: var(--skip-light); color: var(--skip-color); }
+.btn-skip:hover { background: #C7D2FE; }
+.action-spacer { flex: 1; }
+
+/* ---- COMPLETE SCREEN ---- */
+.complete-screen {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 3rem; gap: 1rem; min-height: 400px;
+}
+.complete-icon { font-size: 4rem; line-height: 1; }
+.complete-title { font-family: var(--font-display); font-size: 2rem; }
+.complete-subtitle { color: var(--text-secondary); font-size: 1rem; max-width: 400px; }
+
+/* ---- LOADING ---- */
+.loading-screen {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 80vh; gap: 1rem; text-align: center;
+}
+.spinner {
+  width: 36px; height: 36px; border: 3px solid var(--border-light);
+  border-top-color: var(--accent); border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- FADE TRANSITION ---- */
+.step-container { animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ---- PROBLEM NAV PILLS (bottom of problem panel) ---- */
+.problem-nav {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding-top: 0.75rem; border-top: 1px solid var(--border-light);
+  margin-top: auto;
+}
+.problem-nav-dots {
+  display: flex; gap: 3px; flex-wrap: wrap; flex: 1;
+}
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border); cursor: pointer;
+  transition: all var(--transition);
+}
+.dot:hover { background: var(--text-tertiary); transform: scale(1.3); }
+.dot.current { background: var(--accent); transform: scale(1.4); }
+.dot.done { background: var(--success); }
+.dot.skipped { background: var(--skip-color); }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="loading-screen" id="loading">
+    <div class="spinner"></div>
+    <div style="font-family: var(--font-display); font-size: 1.2rem;">Loading annotations...</div>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+const state = {
+  config: null,
+  problems: [],
+  standards: {},
+  annotations: {},
+  currentIndex: 0,
+  step: 'grade',
+  selectedGrade: null,
+  selectedDomain: null,
+  selectedStandards: [],
+  notes: '',
+  searchQuery: '',
+  flatStandards: [],
+};
+
+// ---- DATA LOADING ----
+async function init() {
+  const [config, problems, standards, annotations] = await Promise.all([
+    fetch('/api/config').then(r => r.json()),
+    fetch('/api/problems').then(r => r.json()),
+    fetch('/api/standards').then(r => r.json()),
+    fetch('/api/annotations').then(r => r.json()),
+  ]);
+
+  state.config = config;
+  state.problems = problems;
+  state.standards = standards;
+  state.annotations = annotations;
+
+  // Build flat search index
+  state.flatStandards = [];
+  for (const [gk, grade] of Object.entries(standards)) {
+    for (const [dk, domain] of Object.entries(grade.domains)) {
+      for (const [ck, cluster] of Object.entries(domain.clusters)) {
+        for (const [sk, std] of Object.entries(cluster.standards)) {
+          state.flatStandards.push({
+            id: sk, description: std.description,
+            grade: grade.name, domain: dk, cluster: ck,
+            gradeKey: gk, clusterType: cluster.cluster_type,
+          });
+          for (const [subk, sub] of Object.entries(std.sub_standards || {})) {
+            state.flatStandards.push({
+              id: subk, description: sub.description,
+              grade: grade.name, domain: dk, cluster: ck,
+              gradeKey: gk, clusterType: cluster.cluster_type,
+            });
+          }
+        }
+      }
+    }
+  }
+
+  // Find first unannotated problem
+  const firstUnannotated = state.problems.findIndex(p => !state.annotations[p.id]);
+  if (firstUnannotated >= 0) state.currentIndex = firstUnannotated;
+
+  render();
+}
+
+// ---- RENDERING ----
+function render() {
+  const app = $('#app');
+  const problem = state.problems[state.currentIndex];
+  if (!problem) { app.innerHTML = renderComplete(); return; }
+
+  const done = Object.keys(state.annotations).length;
+  const total = state.problems.length;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const existing = state.annotations[problem.id];
+
+  app.innerHTML = `
+    <div class="topbar">
+      <div class="topbar-logo">MathFish <span>Annotator</span></div>
+      <div class="progress-wrap">
+        <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:${pct}%"></div></div>
+        <div class="progress-text">${done} / ${total} done</div>
+      </div>
+      <div class="annotator-badge">${state.config.annotator}</div>
+    </div>
+    <div class="main-layout">
+      <div class="problem-panel">
+        <div class="problem-header">
+          <div class="problem-number">Problem ${state.currentIndex + 1}</div>
+          ${problem.is_shared ? '<div class="badge badge-shared">Shared (IRR)</div>' : '<div class="badge badge-unique">Unique</div>'}
+          <div class="badge badge-source">${escHtml(problem.source)}</div>
+          ${existing ? (existing.skipped ? '<div class="badge badge-skipped">Skipped</div>' : '<div class="badge badge-done">Done</div>') : ''}
+        </div>
+        <div class="problem-text" id="problem-text">${formatProblemText(problem.text)}</div>
+        <div class="problem-nav">
+          <div class="problem-nav-dots">
+            ${state.problems.map((p, i) => {
+              const a = state.annotations[p.id];
+              let cls = '';
+              if (i === state.currentIndex) cls = 'current';
+              else if (a && a.skipped) cls = 'skipped';
+              else if (a) cls = 'done';
+              return `<div class="dot ${cls}" onclick="jumpTo(${i})" title="Problem ${i+1}${a ? (a.skipped ? ' (skipped)' : ' (done)') : ''}"></div>`;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="selection-panel">
+        ${renderBreadcrumb()}
+        ${renderSearch()}
+        ${state.selectedStandards.length > 0 ? renderSelectedChips() : ''}
+        <div class="step-container" id="step-content">
+          ${renderCurrentStep()}
+        </div>
+        ${renderActionBar()}
+      </div>
+    </div>
+  `;
+
+  // Typeset math after render
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise([document.getElementById('problem-text')]).catch(() => {});
+  }
+}
+
+function renderBreadcrumb() {
+  const crumbs = [{label: 'Grade', step: 'grade'}];
+  if (state.selectedGrade) {
+    const g = state.standards[state.selectedGrade];
+    crumbs.push({label: g ? g.name : state.selectedGrade, step: 'domain'});
+  }
+  if (state.selectedDomain) {
+    crumbs.push({label: state.selectedDomain, step: 'standard'});
+  }
+  if (state.step === 'review') {
+    crumbs.push({label: 'Review', step: 'review'});
+  }
+
+  return `<div class="breadcrumb">${crumbs.map((c, i) => {
+    const isLast = i === crumbs.length - 1;
+    const sep = i > 0 ? '<span class="breadcrumb-sep">&rsaquo;</span>' : '';
+    return `${sep}<span class="breadcrumb-item ${isLast ? 'active' : ''}" onclick="${isLast ? '' : `goToStep('${c.step}')`}">${c.label}</span>`;
+  }).join('')}</div>`;
+}
+
+function renderSearch() {
+  const results = state.searchQuery.length >= 2
+    ? state.flatStandards.filter(s =>
+        s.description.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+        s.id.toLowerCase().includes(state.searchQuery.toLowerCase())
+      ).slice(0, 12)
+    : [];
+
+  return `
+    <div class="search-container">
+      <span class="search-icon">&#x1F50D;</span>
+      <input class="search-input" type="text" placeholder="Search standards by keyword or code..."
+        value="${escAttr(state.searchQuery)}"
+        oninput="onSearch(this.value)" onfocus="onSearch(this.value)" onblur="setTimeout(()=>closeSearch(),200)">
+      ${results.length > 0 ? `<div class="search-results">
+        ${results.map(s => `
+          <div class="search-result-item" onmousedown="addStandardFromSearch('${s.id}', '${escAttr(s.description)}')">
+            <div class="search-result-code">${s.id} <span style="color:var(--text-tertiary);font-family:var(--font-body);font-size:0.7rem">${s.grade}</span></div>
+            <div class="search-result-desc">${escHtml(s.description)}</div>
+          </div>
+        `).join('')}
+      </div>` : (state.searchQuery.length >= 2 ? '<div class="search-results"><div class="search-empty">No standards match that query</div></div>' : '')}
+    </div>
+  `;
+}
+
+function renderSelectedChips() {
+  return `
+    <div class="selected-section">
+      <div class="selected-label">Selected Standards (${state.selectedStandards.length})</div>
+      <div class="selected-chips">
+        ${state.selectedStandards.map(s => `
+          <div class="chip">
+            ${s.id}
+            <span class="chip-remove" onclick="removeStandard('${s.id}')">&times;</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderCurrentStep() {
+  switch (state.step) {
+    case 'grade': return renderGradeStep();
+    case 'domain': return renderDomainStep();
+    case 'standard': return renderStandardStep();
+    case 'review': return renderReviewStep();
+    default: return '';
+  }
+}
+
+function renderGradeStep() {
+  const grades = Object.entries(state.standards)
+    .sort((a, b) => a[1].sort_key - b[1].sort_key);
+
+  const elementary = grades.filter(([k]) => !k.startsWith('HS'));
+  const hs = grades.filter(([k]) => k.startsWith('HS'));
+
+  return `
+    <div class="step-title">Select Grade Level</div>
+    <div class="step-subtitle">What grade level does this problem target?</div>
+    <div class="grade-grid">
+      ${elementary.map(([key, g]) => {
+        const label = key === 'K' ? 'K' : key;
+        const domainCount = Object.keys(g.domains).length;
+        return `<div class="grade-card" onclick="selectGrade('${key}')">
+          <div class="grade-card-number">${label}</div>
+          <div class="grade-card-name">${g.name}</div>
+          <div class="grade-card-count">${domainCount} domains</div>
+        </div>`;
+      }).join('')}
+    </div>
+    ${hs.length > 0 ? `
+      <div class="grade-section-label">High School</div>
+      <div class="grade-grid">
+        ${hs.map(([key, g]) => {
+          const label = g.name.replace('HS: ', '');
+          const domainCount = Object.keys(g.domains).length;
+          return `<div class="grade-card" onclick="selectGrade('${key}')">
+            <div class="grade-card-number" style="font-size:1.1rem">${label}</div>
+            <div class="grade-card-count">${domainCount} domains</div>
+          </div>`;
+        }).join('')}
+      </div>
+    ` : ''}
+  `;
+}
+
+function renderDomainStep() {
+  const grade = state.standards[state.selectedGrade];
+  if (!grade) return '<div>No domains found.</div>';
+
+  const domains = Object.entries(grade.domains);
+
+  return `
+    <div class="step-title">Select Domain</div>
+    <div class="step-subtitle">Which mathematical domain does this problem address?</div>
+    <div class="domain-list">
+      ${domains.map(([key, d]) => {
+        const clusterCount = Object.keys(d.clusters).length;
+        const shortDesc = d.description.length > 120 ? d.description.slice(0, 120) + '...' : d.description;
+        return `<div class="domain-card" onclick="selectDomain('${key}')">
+          <div class="domain-card-header">
+            <span class="domain-code">${key}</span>
+          </div>
+          <div class="domain-desc">${escHtml(shortDesc)}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+}
+
+function renderStandardStep() {
+  const grade = state.standards[state.selectedGrade];
+  if (!grade) return '';
+  const domain = grade.domains[state.selectedDomain];
+  if (!domain) return '';
+
+  const clusters = Object.entries(domain.clusters);
+
+  return `
+    <div class="step-title">Select Standard(s)</div>
+    <div class="step-subtitle">Check all standards this problem addresses. You can add from other domains after.</div>
+    ${clusters.map(([ck, cluster]) => {
+      const typeCls = cluster.cluster_type.includes('major') ? 'major'
+        : cluster.cluster_type.includes('supporting') ? 'supporting' : 'additional';
+      const typeLabel = cluster.cluster_type.includes('major') ? 'Major'
+        : cluster.cluster_type.includes('supporting') ? 'Supporting' : 'Additional';
+
+      const standards = Object.entries(cluster.standards);
+
+      return `<div class="cluster-group">
+        <div class="cluster-header">
+          <span class="cluster-code">${ck}</span>
+          <span class="cluster-desc">${escHtml(cluster.description)}</span>
+          <span class="cluster-type-badge cluster-type-${typeCls}">${typeLabel}</span>
+        </div>
+        ${standards.map(([sk, std]) => {
+          const isSelected = state.selectedStandards.some(s => s.id === sk);
+          return `<div class="standard-item ${isSelected ? 'selected' : ''}" onclick="toggleStandard('${sk}')">
+            <div class="standard-checkbox"><span class="standard-checkbox-check">&#10003;</span></div>
+            <div class="standard-info">
+              <div class="standard-code-label">${sk}</div>
+              <div class="standard-desc">${escHtml(std.description)}</div>
+            </div>
+          </div>
+          ${Object.entries(std.sub_standards || {}).map(([subk, sub]) => {
+            const subSelected = state.selectedStandards.some(s => s.id === subk);
+            return `<div class="standard-item sub-standard-item ${subSelected ? 'selected' : ''}" onclick="toggleStandard('${subk}')">
+              <div class="standard-checkbox"><span class="standard-checkbox-check">&#10003;</span></div>
+              <div class="standard-info">
+                <div class="standard-code-label">${subk}</div>
+                <div class="standard-desc">${escHtml(sub.description)}</div>
+              </div>
+            </div>`;
+          }).join('')}`;
+        }).join('')}
+      </div>`;
+    }).join('')}
+    <div class="add-more" onclick="addFromAnotherDomain()">+ Add from another domain</div>
+  `;
+}
+
+function renderReviewStep() {
+  return `
+    <div class="step-title">Review & Save</div>
+    <div class="step-subtitle">Confirm your selections for this problem.</div>
+    <div class="review-card">
+      ${state.selectedStandards.length > 0
+        ? state.selectedStandards.map(s => `
+            <div class="review-standard">
+              <div class="review-standard-code">${s.id}</div>
+              <div class="review-standard-desc">${escHtml(s.description)}</div>
+            </div>
+          `).join('')
+        : '<div style="color:var(--text-tertiary);padding:1rem;text-align:center">No standards selected</div>'
+      }
+    </div>
+    <div style="margin-bottom:0.5rem">
+      <div class="selected-label">Notes (optional)</div>
+      <textarea class="notes-field" placeholder="Any notes about this problem or your annotation..."
+        oninput="state.notes=this.value">${escHtml(state.notes)}</textarea>
+    </div>
+  `;
+}
+
+function renderActionBar() {
+  const canConfirm = state.step === 'review';
+  const canDone = state.step === 'standard' && state.selectedStandards.length > 0;
+  const canBack = state.step !== 'grade';
+
+  return `<div class="action-bar">
+    ${canBack ? `<button class="btn btn-secondary" onclick="goBack()">&larr; Back</button>` : ''}
+    <button class="btn btn-skip" onclick="skipProblem()">Skip</button>
+    <span class="action-spacer"></span>
+    ${canDone ? `<button class="btn btn-primary" onclick="goToReview()">Review (${state.selectedStandards.length}) &rarr;</button>` : ''}
+    ${canConfirm ? `<button class="btn btn-primary" onclick="saveAnnotation()" ${state.selectedStandards.length === 0 ? 'disabled' : ''}>Save & Next &rarr;</button>` : ''}
+  </div>`;
+}
+
+function renderComplete() {
+  const done = Object.keys(state.annotations).length;
+  const skipped = Object.values(state.annotations).filter(a => a.skipped).length;
+  return `
+    <div class="topbar">
+      <div class="topbar-logo">MathFish <span>Annotator</span></div>
+      <div class="progress-wrap">
+        <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:100%"></div></div>
+        <div class="progress-text">${done} / ${state.problems.length} done</div>
+      </div>
+      <div class="annotator-badge">${state.config.annotator}</div>
+    </div>
+    <div class="complete-screen">
+      <div class="complete-icon">&#127881;</div>
+      <div class="complete-title">All Done!</div>
+      <div class="complete-subtitle">
+        You've annotated all ${state.problems.length} problems.
+        ${skipped > 0 ? `<br>${skipped} were skipped &mdash; click below to revisit them.` : ''}
+      </div>
+      ${skipped > 0 ? `<button class="btn btn-primary" onclick="goToFirstSkipped()">Revisit Skipped</button>` : ''}
+      <div style="color:var(--text-tertiary);font-size:0.85rem;margin-top:1rem">
+        Annotations saved to <code style="font-family:var(--font-mono)">annotations/${state.config.annotator}_annotations.jsonl</code>
+      </div>
+    </div>
+  `;
+}
+
+// ---- HELPERS ----
+function escHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escAttr(s) { return escHtml(s).replace(/'/g, '&#39;'); }
+
+function formatProblemText(text) {
+  if (!text) return '';
+  // Keep $ for MathJax, escape HTML, convert newlines
+  let safe = escHtml(text)
+    .replace(/\$\$(.*?)\$\$/g, (_, m) => `$$${m.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')}$$`)
+    .replace(/\$(.*?)\$/g, (_, m) => `$${m.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')}$`);
+  return safe;
+}
+
+// ---- ACTIONS ----
+function selectGrade(key) {
+  state.selectedGrade = key;
+  state.selectedDomain = null;
+  state.step = 'domain';
+  render();
+}
+
+function selectDomain(key) {
+  state.selectedDomain = key;
+  state.step = 'standard';
+  render();
+}
+
+function toggleStandard(id) {
+  const idx = state.selectedStandards.findIndex(s => s.id === id);
+  if (idx >= 0) {
+    state.selectedStandards.splice(idx, 1);
+  } else {
+    const found = state.flatStandards.find(s => s.id === id);
+    state.selectedStandards.push({ id, description: found ? found.description : id });
+  }
+  render();
+}
+
+function removeStandard(id) {
+  state.selectedStandards = state.selectedStandards.filter(s => s.id !== id);
+  render();
+}
+
+function addStandardFromSearch(id, description) {
+  if (!state.selectedStandards.some(s => s.id === id)) {
+    // Get full description from flat index
+    const found = state.flatStandards.find(s => s.id === id);
+    state.selectedStandards.push({ id, description: found ? found.description : description });
+  }
+  state.searchQuery = '';
+  render();
+}
+
+function addFromAnotherDomain() {
+  state.selectedGrade = null;
+  state.selectedDomain = null;
+  state.step = 'grade';
+  render();
+}
+
+function goToReview() {
+  state.step = 'review';
+  render();
+}
+
+function goBack() {
+  if (state.step === 'review') state.step = 'standard';
+  else if (state.step === 'standard') { state.step = 'domain'; state.selectedDomain = null; }
+  else if (state.step === 'domain') { state.step = 'grade'; state.selectedGrade = null; }
+  render();
+}
+
+function goToStep(step) {
+  if (step === 'grade') { state.selectedGrade = null; state.selectedDomain = null; }
+  else if (step === 'domain') { state.selectedDomain = null; }
+  state.step = step;
+  render();
+}
+
+function jumpTo(index) {
+  state.currentIndex = index;
+  state.step = 'grade';
+  state.selectedGrade = null;
+  state.selectedDomain = null;
+  state.selectedStandards = [];
+  state.notes = '';
+  state.searchQuery = '';
+
+  // Pre-fill if already annotated
+  const problem = state.problems[index];
+  if (problem && state.annotations[problem.id]) {
+    const a = state.annotations[problem.id];
+    if (!a.skipped && a.standards) {
+      state.selectedStandards = a.standards.map(s => {
+        const found = state.flatStandards.find(f => f.id === s.id);
+        return { id: s.id, description: found ? found.description : s.description || '' };
+      });
+      state.notes = a.notes || '';
+      state.step = 'review';
+    }
+  }
+  render();
+}
+
+async function saveAnnotation() {
+  const problem = state.problems[state.currentIndex];
+  const annotation = {
+    problem_id: problem.id,
+    standards: state.selectedStandards.map(s => ({ id: s.id, description: s.description })),
+    notes: state.notes,
+    skipped: false,
+  };
+
+  await fetch('/api/annotate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(annotation),
+  });
+
+  state.annotations[problem.id] = annotation;
+  advanceToNext();
+}
+
+async function skipProblem() {
+  const problem = state.problems[state.currentIndex];
+  const annotation = {
+    problem_id: problem.id,
+    standards: [],
+    notes: '',
+    skipped: true,
+  };
+
+  await fetch('/api/annotate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(annotation),
+  });
+
+  state.annotations[problem.id] = annotation;
+  advanceToNext();
+}
+
+function advanceToNext() {
+  // Find next unannotated, or next unannotated-non-skipped
+  let next = -1;
+  for (let i = state.currentIndex + 1; i < state.problems.length; i++) {
+    if (!state.annotations[state.problems[i].id]) { next = i; break; }
+  }
+  if (next < 0) {
+    for (let i = 0; i < state.currentIndex; i++) {
+      if (!state.annotations[state.problems[i].id]) { next = i; break; }
+    }
+  }
+
+  if (next >= 0) {
+    state.currentIndex = next;
+  } else {
+    state.currentIndex = state.problems.length; // triggers complete screen
+  }
+
+  state.step = 'grade';
+  state.selectedGrade = null;
+  state.selectedDomain = null;
+  state.selectedStandards = [];
+  state.notes = '';
+  state.searchQuery = '';
+  render();
+  // Scroll selection panel to top
+  const sp = document.querySelector('.selection-panel');
+  if (sp) sp.scrollTop = 0;
+}
+
+function goToFirstSkipped() {
+  for (let i = 0; i < state.problems.length; i++) {
+    const a = state.annotations[state.problems[i].id];
+    if (a && a.skipped) {
+      // Clear the skipped annotation so they can redo it
+      delete state.annotations[state.problems[i].id];
+      jumpTo(i);
+      return;
+    }
+  }
+}
+
+function onSearch(query) {
+  state.searchQuery = query;
+  // Re-render just the search area for performance
+  const container = document.querySelector('.search-container');
+  if (container) {
+    container.outerHTML = renderSearch();
+    // Re-focus input
+    const input = document.querySelector('.search-input');
+    if (input) { input.focus(); input.setSelectionRange(query.length, query.length); }
+  }
+}
+
+function closeSearch() {
+  state.searchQuery = '';
+  const container = document.querySelector('.search-container');
+  if (container) container.outerHTML = renderSearch();
+}
+
+// ---- INIT ----
+init();
+</script>
+
+</body>
+</html>
