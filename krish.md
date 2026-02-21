@@ -2,9 +2,18 @@
 
 ## Your Responsibilities
 
-1. **Benchmark 4 models** against our annotated validation set
+1. **Benchmark 4 models** against two ground truths (our annotations + publisher labels)
 2. **Calculate IRR** across all annotators on the 20 shared problems
 3. **Find a 4th reviewer** (our teacher buddy) to annotate the shared problems
+
+## Data You Need
+
+**Download the full dataset** (too large for GitHub):
+- `mathfish_train.jsonl` (13,065 problems, ~125MB): [Google Drive](https://drive.google.com/file/d/1_QdLBzRw35UdPFm8wxIH-LYjRVi2MlBS/view)
+- Place it in the repo root (`cs293-a3/mathfish_train.jsonl`)
+- You need this for running the TF-IDF baseline (needs all standard descriptions) and for any broader analysis
+
+Everything else is already in the repo.
 
 ---
 
@@ -98,7 +107,26 @@ The 20 shared problem IDs are listed in `annotations/assignments.json` under `"s
 
 ## Part 3: Benchmark 4 Models
 
-Run each model on the same problems in our validation set and compare predictions to the human consensus labels.
+### Two Ground Truths
+
+You'll evaluate each model against **two separate baselines**:
+
+#### Ground Truth 1: Publisher Labels (already in the data)
+
+Every problem in `annotations/problems.json` already has a `"standards"` field -- these are the labels assigned by the original curriculum publishers (Illustrative Mathematics / Fishtank Learning). Each entry is a `[relation_type, standard_code]` pair, e.g. `["Addressing", "4.NBT.A.1"]`.
+
+For evaluation, filter to only `"Addressing"` and `"Alignment"` relations (these are equivalent per the MathFish paper -- both mean "directly aligns"). Ignore `"Building On"` and `"Building Towards"`.
+
+This is your **pre-existing ground truth** -- no waiting on annotators needed.
+
+#### Ground Truth 2: Human Consensus (from our annotations)
+
+Once all 4 annotators finish the 20 shared problems, build consensus:
+- For each problem, collect all standards tagged by any annotator
+- Use **majority vote**: a standard is in the consensus if 3+ of 4 annotators tagged it
+- If there's a 2-2 split, flag for discussion
+
+This lets you compare: **do the models agree more with publishers or with us?** And do **we** agree with the publishers? (This is interesting analysis for the report.)
 
 ### Model 1: Lexical Baseline (TF-IDF Cosine Similarity)
 
@@ -140,7 +168,7 @@ Same prompt as above. Now you have 3 LLMs + 1 lexical baseline = 4 models total 
 
 ### Evaluation Metrics
 
-For each model, compute against the human consensus:
+For each model, compute against **both** ground truths:
 
 | Metric | Description |
 |--------|-------------|
@@ -155,6 +183,7 @@ Also analyze:
 - Does performance vary by **grade level**? (K-5 vs 6-8 vs HS)
 - Do models systematically confuse **nearby standards** (right domain, wrong cluster)?
 - Which model is best at which granularity level?
+- **Do models agree more with publisher labels or human consensus?**
 
 ---
 
@@ -163,13 +192,14 @@ Also analyze:
 | Resource | Location |
 |----------|----------|
 | Repo | `https://github.com/zcsabbagh/cs293-a3` |
-| Standards hierarchy | `standards.jsonl` (737 entries, 385 actual standards) |
-| Assigned problems | `annotations/problems.json` (40 problems with full text) |
+| Full dataset | [Google Drive](https://drive.google.com/file/d/1_QdLBzRw35UdPFm8wxIH-LYjRVi2MlBS/view) -- download as `mathfish_train.jsonl` |
+| Standards hierarchy | `standards.jsonl` (737 entries, 385 actual standards with descriptions) |
+| Assigned problems | `annotations/problems.json` (40 problems with text + publisher labels) |
 | Assignment config | `annotations/assignments.json` (who gets which problem IDs) |
 | Annotation tool | `python3 annotate.py --name <name>` |
 | Setup instructions | `INSTRUCTIONS.md` |
+| Dataset documentation | `CLAUDE.md` (full schema, stats, field descriptions) |
 | MathFish paper | [arXiv:2408.04226](https://arxiv.org/abs/2408.04226) |
-| Full dataset (optional) | [HuggingFace](https://huggingface.co/datasets/allenai/mathfish) |
 
 ---
 
@@ -177,7 +207,8 @@ Also analyze:
 
 1. Find the 4th reviewer ASAP -- they need time to annotate
 2. Do your own 25 annotations (use `--name krish` after re-running setup with your name)
-3. Collect all annotation files
-4. Compute IRR
-5. Run the 4 models
-6. Write up results tables and error analysis
+3. **While waiting on annotators**: run models against publisher labels (Ground Truth 1) -- you can start this immediately
+4. Collect all annotation files, build consensus (Ground Truth 2)
+5. Compute IRR
+6. Re-run model eval against human consensus
+7. Write up results tables and error analysis
