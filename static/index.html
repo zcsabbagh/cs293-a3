@@ -741,7 +741,7 @@ function renderReviewStep() {
 
 function renderActionBar() {
   const canConfirm = state.step === 'review';
-  const canDone = state.step === 'standard' && state.selectedStandards.length > 0;
+  const canDone = state.step !== 'review' && state.selectedStandards.length > 0;
   const canBack = state.step !== 'grade';
 
   return `<div class="action-bar">
