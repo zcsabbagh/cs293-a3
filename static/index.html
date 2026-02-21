@@ -980,6 +980,8 @@ function onSearch(query) {
 }
 
 function closeSearch() {
+  const input = document.querySelector('.search-input');
+  if (input && document.activeElement === input) return;
   state.searchQuery = '';
   const container = document.querySelector('.search-container');
   if (container) container.outerHTML = renderSearch();
