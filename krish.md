@@ -145,6 +145,7 @@ This is NOT an LLM -- it's a simple text matching heuristic. The assignment spec
 #### Results
 
 All benchmark results live in `RESULTS.md`.
+IRR currently computed with `krish` + `zane` only (update when more annotators finish).
 
 #### Scripts
 

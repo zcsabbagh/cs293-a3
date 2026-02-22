@@ -38,9 +38,13 @@ Models used: Gemini `gemini-3.1-pro-preview`, OpenAI `gpt-5.2`, Anthropic `claud
 
 ### Gemini (gemini-3.1-pro-preview)
 
-Failed with quota error (HTTP 429). See `results/llm_results.json` for full error text.
+| Level | Precision | Recall | F1 | Exact |
+|-------|-----------|--------|----|-------|
+| Standard | 0.682 | 0.341 | 0.455 | 0.400 |
+| Cluster | 0.714 | 0.375 | 0.492 | 0.400 |
+| Domain | 0.714 | 0.395 | 0.508 | 0.450 |
 
-Re-run if quota is available:
+Re-run if needed:
 
 ```bash
 python3 llm_benchmark.py all --output-dir preds --results results/llm_results.json
@@ -48,7 +52,13 @@ python3 llm_benchmark.py all --output-dir preds --results results/llm_results.js
 
 ## IRR (Krippendorff’s Alpha)
 
-Pending: requires at least two annotators with overlapping annotations.
+Computed with available annotators: `krish`, `zane`.
+
+| Level | Alpha | Items | Annotators |
+|-------|-------|-------|------------|
+| Standard | 0.505 | 780 | 2 |
+| Cluster | 0.636 | 540 | 2 |
+| Domain | 0.680 | 480 | 2 |
 
 ```bash
 python3 irr.py --output results/irr.json

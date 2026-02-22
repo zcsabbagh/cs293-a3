@@ -1,0 +1,22 @@
+{
+  "annotators": [
+    "krish",
+    "zane"
+  ],
+  "shared_count": 20,
+  "standard": {
+    "alpha": 0.5045165607226497,
+    "items": 780,
+    "annotators": 2
+  },
+  "cluster": {
+    "alpha": 0.6360161260000418,
+    "items": 540,
+    "annotators": 2
+  },
+  "domain": {
+    "alpha": 0.6798373330655688,
+    "items": 480,
+    "annotators": 2
+  }
+}

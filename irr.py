@@ -21,14 +21,23 @@ def load_shared_ids(path: str) -> List[str]:
 def load_annotations(paths: Iterable[str]) -> Dict[str, Dict[str, Dict]]:
     annotations = {}
     for path in paths:
-        annotator = os.path.basename(path).replace("_annotations.jsonl", "")
+        base = os.path.basename(path)
+        annotator = base.replace("_annotations.jsonl", "").replace("_annotations.json", "")
         annotations[annotator] = {}
         with open(path) as f:
-            for line in f:
-                if not line.strip():
-                    continue
-                a = json.loads(line)
-                annotations[annotator][a["problem_id"]] = a
+            content = f.read().strip()
+            if not content:
+                continue
+            if content.startswith("["):
+                items = json.loads(content)
+                for a in items:
+                    annotations[annotator][a["problem_id"]] = a
+            else:
+                for line in content.splitlines():
+                    if not line.strip():
+                        continue
+                    a = json.loads(line)
+                    annotations[annotator][a["problem_id"]] = a
     return annotations
 
 
@@ -103,7 +112,7 @@ def main() -> None:
     ann_files = [
         os.path.join("annotations", f)
         for f in os.listdir("annotations")
-        if f.endswith("_annotations.jsonl")
+        if f.endswith("_annotations.jsonl") or f.endswith("_annotations.json")
     ]
     if not ann_files:
         raise RuntimeError("No annotation files found in annotations/")
