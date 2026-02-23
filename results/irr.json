@@ -1,22 +1,24 @@
 {
   "annotators": [
     "krish",
+    "sera",
+    "teacher_buddy",
     "zane"
   ],
   "shared_count": 20,
   "standard": {
-    "alpha": 0.5045165607226497,
-    "items": 780,
-    "annotators": 2
+    "alpha": 0.263101143957413,
+    "items": 1340,
+    "annotators": 4
   },
   "cluster": {
-    "alpha": 0.6360161260000418,
-    "items": 540,
-    "annotators": 2
+    "alpha": 0.33035114503816787,
+    "items": 900,
+    "annotators": 4
   },
   "domain": {
-    "alpha": 0.6798373330655688,
-    "items": 480,
-    "annotators": 2
+    "alpha": 0.4133840510800163,
+    "items": 600,
+    "annotators": 4
   }
 }

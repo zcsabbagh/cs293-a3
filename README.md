@@ -37,9 +37,4 @@ All benchmark results are summarized in `RESULTS.md`.
 
 - TF-IDF baseline: complete (k=1,3,5)
 - LLM benchmarks: complete (Gemini, OpenAI, Anthropic)
-- IRR: computed for `krish` + `zane`; rerun after more annotators finish
-- After Sera + teacher_buddy add their annotations then run:
-  ```bash
-  python3 irr.py --output results/irr.json
-  ```
-  and update `RESULTS.md` with updated IRR values.
+- IRR: computed for `krish`, `sera`, `teacher_buddy`, `zane` (see `RESULTS.md`)

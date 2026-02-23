@@ -16,6 +16,13 @@ Top-k results using `benchmark.py` (ground truth = Addressing/Alignment):
 | 5 | Cluster | 0.087 | 0.400 | 0.143 | 0.000 |
 | 5 | Domain | 0.112 | 0.500 | 0.184 | 0.000 |
 
+### Notes
+
+- Precision/recall tradeoff follows expectations: k=1 is more precise, k=5 is more recall-heavy.
+- Exact match is near-zero for TF-IDF, suggesting lexical overlap alone rarely recovers full standard sets.
+- The gap between domain- and standard-level scores shows most lexical matches land in the right neighborhood but miss fine-grained standards.
+- For reporting, k=3 is a reasonable middle ground (balanced recall with modest precision), while k=1 can be framed as a high-precision baseline.
+
 ## LLM Benchmarks (Publisher Labels)
 
 Models used: Gemini `gemini-3.1-pro-preview`, OpenAI `gpt-5.2`, Anthropic `claude-sonnet-4-6`.
@@ -44,6 +51,16 @@ Models used: Gemini `gemini-3.1-pro-preview`, OpenAI `gpt-5.2`, Anthropic `claud
 | Cluster | 0.714 | 0.375 | 0.492 | 0.400 |
 | Domain | 0.714 | 0.395 | 0.508 | 0.450 |
 
+### Notes
+
+- GPT-5.2 leads on recall and F1 at all levels, with the strongest domain-level F1.
+- Gemini is notably more precise but less recall-heavy, suggesting tighter predictions.
+- Claude Sonnet 4.6 is consistently competitive, especially at cluster/domain granularity.
+- Exact match improves substantially vs TF-IDF, especially at higher granularity.
+- LLMs show a clear lift over TF-IDF on standard-level F1, indicating benefits beyond lexical overlap.
+- Precision/recall profiles differ by model; this can motivate a discussion about cost vs coverage (recall) tradeoffs.
+- If you need a single “best” model for downstream analysis, GPT-5.2 is the safest choice on aggregate F1.
+
 Re-run if needed:
 
 ```bash
@@ -52,13 +69,21 @@ python3 llm_benchmark.py all --output-dir preds --results results/llm_results.js
 
 ## IRR (Krippendorff’s Alpha)
 
-Computed with available annotators: `krish`, `zane`.
+Computed with annotators: `krish`, `sera`, `teacher_buddy`, `zane`.
 
 | Level | Alpha | Items | Annotators |
 |-------|-------|-------|------------|
-| Standard | 0.505 | 780 | 2 |
-| Cluster | 0.636 | 540 | 2 |
-| Domain | 0.680 | 480 | 2 |
+| Standard | 0.263 | 1340 | 4 |
+| Cluster | 0.330 | 900 | 4 |
+| Domain | 0.413 | 600 | 4 |
+
+### Notes
+
+- Agreement is highest at domain level and lowest at exact standard level, which is typical for fine-grained tagging.
+- Alpha values < 0.667 indicate only tentative agreement; flag this in the writeup and discuss ambiguity.
+- Low alpha at the standard level suggests either ambiguous items, differing interpretations of “Addressing,” or standards that are close in meaning.
+- Consider adding a short error analysis: list a few standards with frequent disagreement and explain why they are confusable.
+- This supports a narrative that the task is inherently fine-grained and that model evaluation should be reported at multiple levels.
 
 ```bash
 python3 irr.py --output results/irr.json
