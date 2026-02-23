@@ -20,5 +20,15 @@
     "alpha": 0.4133840510800163,
     "items": 600,
     "annotators": 4
+  },
+  "grade": {
+    "alpha": 0.49176932525426953,
+    "items": 240,
+    "annotators": 4
+  },
+  "no_grade": {
+    "alpha": 0.2835049683830172,
+    "items": 1180,
+    "annotators": 4
   }
 }

@@ -41,21 +41,32 @@ def load_annotations(paths: Iterable[str]) -> Dict[str, Dict[str, Dict]]:
     return annotations
 
 
-def standard_levels(code: str) -> Tuple[str, str, str]:
+def standard_levels(code: str) -> Tuple[str, str, str, str, str]:
     parts = code.split(".")
+    first = parts[0] if parts else code
+    if "-" in first:
+        grade = f"HS-{first.split('-')[0]}"
+        no_grade = code
+    else:
+        grade = first
+        no_grade = ".".join(parts[1:]) if len(parts) > 1 else code
     domain = ".".join(parts[:2]) if len(parts) >= 2 else code
     cluster = ".".join(parts[:3]) if len(parts) >= 3 else domain
-    return domain, cluster, code
+    return grade, domain, cluster, code, no_grade
 
 
 def map_level(codes: Iterable[str], level: str) -> Set[str]:
     mapped = set()
     for code in codes:
-        domain, cluster, standard = standard_levels(code)
-        if level == "domain":
+        grade, domain, cluster, standard, no_grade = standard_levels(code)
+        if level == "grade":
+            mapped.add(grade)
+        elif level == "domain":
             mapped.add(domain)
         elif level == "cluster":
             mapped.add(cluster)
+        elif level == "no_grade":
+            mapped.add(no_grade)
         else:
             mapped.add(standard)
     return mapped
@@ -120,7 +131,7 @@ def main() -> None:
     annotations = load_annotations(ann_files)
 
     results = {"annotators": sorted(annotations.keys()), "shared_count": len(shared_ids)}
-    for level in ["standard", "cluster", "domain"]:
+    for level in ["standard", "cluster", "domain", "grade", "no_grade"]:
         matrix = build_reliability_matrix(annotations, shared_ids, level)
         alpha = compute_alpha(matrix)
         results[level] = {

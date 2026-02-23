@@ -76,11 +76,15 @@ Computed with annotators: `krish`, `sera`, `teacher_buddy`, `zane`.
 | Standard | 0.263 | 1340 | 4 |
 | Cluster | 0.330 | 900 | 4 |
 | Domain | 0.413 | 600 | 4 |
+| Grade | 0.492 | 240 | 4 |
+| Standard (no grade, 7.NS.A.3=8.NS.A.3) | 0.284 | 1180 | 4 |
 
 ### Notes
 
 - Agreement is highest at domain level and lowest at exact standard level, which is typical for fine-grained tagging.
 - Alpha values < 0.667 indicate only tentative agreement; flag this in the writeup and discuss ambiguity.
+- Grade-level agreement is higher than domain/standard, reinforcing that annotators align more on coarse structure than exact codes.
+- Standard (no grade) collapses grade-level differences (e.g., 7.NS.A.3 vs 8.NS.A.3). Agreement rises slightly vs exact standard, but remains low.
 - Low alpha at the standard level suggests either ambiguous items, differing interpretations of “Addressing,” or standards that are close in meaning.
 - Consider adding a short error analysis: list a few standards with frequent disagreement and explain why they are confusable.
 - This supports a narrative that the task is inherently fine-grained and that model evaluation should be reported at multiple levels.
