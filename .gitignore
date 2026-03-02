@@ -6,3 +6,6 @@ mathfish_train.jsonl
 .env
 
 # its fine to push each of our annotator files, this is ideal actually
+
+# Large generated A3 artifact (reproducible; avoid GitHub >100MB limit)
+a3/krish/results/descriptive/preds_full_with_metadata.json

@@ -1,0 +1,47 @@
+{
+  "config": {
+    "dataset": "publisher_full",
+    "model_name": "roberta-base",
+    "batch_size": 16,
+    "max_length": 256,
+    "top_k": 3,
+    "seed": 42,
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "eval_split": "test",
+    "max_examples": 0,
+    "grade_filter": true,
+    "device": "auto",
+    "out_preds": "preds/roberta_similarity_publisher_k3.jsonl",
+    "out_metrics": "results/roberta_similarity_publisher_k3.json"
+  },
+  "dataset_size": 2144,
+  "split_sizes": {
+    "train": 1714,
+    "val": 214,
+    "test": 216
+  },
+  "metrics": {
+    "standard": {
+      "precision": 0.04938271604938271,
+      "recall": 0.10666666666666667,
+      "f1": 0.06751054852320675,
+      "exact_match": 0.0,
+      "total": 216
+    },
+    "cluster": {
+      "precision": 0.10391822827938671,
+      "recall": 0.22344322344322345,
+      "f1": 0.1418604651162791,
+      "exact_match": 0.004629629629629629,
+      "total": 216
+    },
+    "domain": {
+      "precision": 0.18773234200743494,
+      "recall": 0.39920948616600793,
+      "f1": 0.2553729456384324,
+      "exact_match": 0.027777777777777776,
+      "total": 216
+    }
+  }
+}

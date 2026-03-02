@@ -1,0 +1,2705 @@
+{
+  "im_lesson_008292": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "fl_problem_001662": {
+    "domain": [
+      "A-REI"
+    ],
+    "cluster": [
+      "A-REI.A"
+    ],
+    "standard": [
+      "A-REI.A.1",
+      "A-REI.A.2"
+    ]
+  },
+  "im_lesson_006117": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "fl_problem_001226": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "fl_problem_000887": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.1",
+      "6.RP.A.2",
+      "6.RP.A.3"
+    ]
+  },
+  "fl_problem_000252": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.3",
+      "4.NBT.A.1",
+      "4.NBT.A.2"
+    ]
+  },
+  "im_lesson_006577": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.3",
+      "3.NF.A.1"
+    ]
+  },
+  "im_task_000164": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_005762": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "fl_problem_001087": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "im_task_001147": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.1",
+      "3.NF.A.3"
+    ]
+  },
+  "im_task_001043": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "fl_problem_001940": {
+    "domain": [
+      "A-REI"
+    ],
+    "cluster": [
+      "A-REI.A"
+    ],
+    "standard": [
+      "A-REI.A.2",
+      "A-REI.A.1"
+    ]
+  },
+  "im_task_000861": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_lesson_001200": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "im_lesson_003091": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "fl_problem_000405": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_003174": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_practice_002404": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.A"
+    ],
+    "standard": [
+      "5.OA.A.2",
+      "5.OA.A.1"
+    ]
+  },
+  "im_lesson_001574": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.4",
+      "8.SP.A.3",
+      "8.SP.A.2"
+    ]
+  },
+  "im_lesson_001136": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.3",
+      "3.NF.A.2",
+      "3.NF.A.1"
+    ]
+  },
+  "fl_problem_001212": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "fl_problem_000344": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.3",
+      "4.NBT.A.1",
+      "4.NBT.A.2"
+    ]
+  },
+  "fl_problem_000526": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_task_001427": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "fl_problem_002145": {
+    "domain": [
+      "G-SRT"
+    ],
+    "cluster": [
+      "G-SRT.C"
+    ],
+    "standard": [
+      "G-SRT.C.6",
+      "G-SRT.C.7",
+      "G-SRT.C.8"
+    ]
+  },
+  "im_lesson_005242": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_007897": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_task_001110": {
+    "domain": [
+      "A-APR"
+    ],
+    "cluster": [
+      "A-APR.B"
+    ],
+    "standard": [
+      "A-APR.B.3",
+      "A-APR.B.2"
+    ]
+  },
+  "im_task_000900": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "fl_problem_000094": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.1",
+      "3.NF.A.2",
+      "3.NF.A.3"
+    ]
+  },
+  "im_task_000222": {
+    "domain": [
+      "4.NF"
+    ],
+    "cluster": [
+      "4.NF.C"
+    ],
+    "standard": [
+      "4.NF.C.5",
+      "4.NF.C.7",
+      "4.NF.C.6"
+    ]
+  },
+  "im_lesson_006935": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.1",
+      "K.OA.A.4",
+      "K.OA.A.3"
+    ]
+  },
+  "fl_problem_000158": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.1",
+      "3.NF.A.3"
+    ]
+  },
+  "im_lesson_001287": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_006431": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_000633": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.4",
+      "8.SP.A.3",
+      "8.SP.A.2"
+    ]
+  },
+  "im_lesson_004904": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.3",
+      "3.NF.A.2",
+      "3.NF.A.1"
+    ]
+  },
+  "im_task_000796": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.5",
+      "4.NBT.B.6",
+      "4.NBT.B.4"
+    ]
+  },
+  "fl_problem_001692": {
+    "domain": [
+      "A-REI"
+    ],
+    "cluster": [
+      "A-REI.A"
+    ],
+    "standard": [
+      "A-REI.A.1",
+      "A-REI.A.2"
+    ]
+  },
+  "im_lesson_009000": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "fl_problem_002133": {
+    "domain": [
+      "G-GPE"
+    ],
+    "cluster": [
+      "G-GPE.A"
+    ],
+    "standard": [
+      "G-GPE.A.1",
+      "G-GPE.A.3",
+      "G-GPE.A.2"
+    ]
+  },
+  "fl_problem_000590": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "fl_problem_001081": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "fl_problem_000400": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_001167": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "im_task_001044": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_task_000851": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.4",
+      "4.NBT.B.5",
+      "4.NBT.B.6"
+    ]
+  },
+  "fl_problem_000932": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "im_lesson_005853": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_003424": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "im_lesson_007332": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.1",
+      "K.OA.A.2",
+      "K.OA.A.4"
+    ]
+  },
+  "fl_problem_000642": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.A"
+    ],
+    "standard": [
+      "5.OA.A.2",
+      "5.OA.A.1"
+    ]
+  },
+  "fl_problem_000830": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.1",
+      "6.RP.A.2",
+      "6.RP.A.3"
+    ]
+  },
+  "im_lesson_000664": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "im_lesson_009774": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "fl_problem_000383": {
+    "domain": [
+      "4.NF"
+    ],
+    "cluster": [
+      "4.NF.B"
+    ],
+    "standard": [
+      "4.NF.B.4",
+      "4.NF.B.3"
+    ]
+  },
+  "fl_problem_001123": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "im_lesson_002244": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "fl_problem_001256": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.3",
+      "8.SP.A.4",
+      "8.SP.A.2"
+    ]
+  },
+  "im_task_001013": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_009254": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "im_lesson_004354": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.1",
+      "3.NF.A.2",
+      "3.NF.A.3"
+    ]
+  },
+  "im_lesson_005146": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "fl_problem_000721": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.A"
+    ],
+    "standard": [
+      "5.OA.A.2",
+      "5.OA.A.1"
+    ]
+  },
+  "im_task_000360": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.3",
+      "3.NF.A.1"
+    ]
+  },
+  "im_task_001037": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_002764": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.4",
+      "8.SP.A.3",
+      "8.SP.A.2"
+    ]
+  },
+  "im_task_001056": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.5",
+      "4.NBT.B.6",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_lesson_008226": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "fl_problem_000960": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.1",
+      "6.RP.A.3",
+      "6.RP.A.2"
+    ]
+  },
+  "fl_problem_000231": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.3",
+      "3.NF.A.1"
+    ]
+  },
+  "fl_problem_001710": {
+    "domain": [
+      "A-REI"
+    ],
+    "cluster": [
+      "A-REI.A"
+    ],
+    "standard": [
+      "A-REI.A.2",
+      "A-REI.A.1"
+    ]
+  },
+  "im_lesson_003996": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "im_lesson_006099": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_task_001065": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.1",
+      "3.NF.A.2",
+      "3.NF.A.3"
+    ]
+  },
+  "fl_problem_000636": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_task_001314": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_006327": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_009047": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "fl_problem_001716": {
+    "domain": [
+      "A-REI"
+    ],
+    "cluster": [
+      "A-REI.A"
+    ],
+    "standard": [
+      "A-REI.A.1",
+      "A-REI.A.2"
+    ]
+  },
+  "im_lesson_005783": {
+    "domain": [
+      "G-GPE"
+    ],
+    "cluster": [
+      "G-GPE.B"
+    ],
+    "standard": [
+      "G-GPE.B.4",
+      "G-GPE.B.5",
+      "G-GPE.B.7"
+    ]
+  },
+  "fl_problem_000534": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "fl_problem_001032": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "fl_problem_001706": {
+    "domain": [
+      "A-APR"
+    ],
+    "cluster": [
+      "A-APR.B"
+    ],
+    "standard": [
+      "A-APR.B.3",
+      "A-APR.B.2"
+    ]
+  },
+  "im_lesson_003630": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.4",
+      "K.OA.A.1",
+      "K.OA.A.2"
+    ]
+  },
+  "im_lesson_008630": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_task_001442": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.5",
+      "4.NBT.B.6",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_task_001077": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.5",
+      "4.NBT.B.6",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_lesson_003977": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_practice_002028": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.A"
+    ],
+    "standard": [
+      "5.OA.A.2",
+      "5.OA.A.1"
+    ]
+  },
+  "fl_problem_001153": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "fl_problem_002161": {
+    "domain": [
+      "G-GPE"
+    ],
+    "cluster": [
+      "G-GPE.B"
+    ],
+    "standard": [
+      "G-GPE.B.4",
+      "G-GPE.B.5",
+      "G-GPE.B.7"
+    ]
+  },
+  "im_lesson_001625": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "fl_problem_000160": {
+    "domain": [
+      "3.OA"
+    ],
+    "cluster": [
+      "3.OA.B"
+    ],
+    "standard": [
+      "3.OA.B.5",
+      "3.OA.B.6"
+    ]
+  },
+  "im_task_001471": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_004579": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.1",
+      "K.OA.A.3",
+      "K.OA.A.2"
+    ]
+  },
+  "fl_problem_001631": {
+    "domain": [
+      "A-APR"
+    ],
+    "cluster": [
+      "A-APR.B"
+    ],
+    "standard": [
+      "A-APR.B.2",
+      "A-APR.B.3"
+    ]
+  },
+  "im_lesson_009447": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_lesson_004741": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "im_lesson_008548": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "fl_problem_000528": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_005944": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "fl_problem_000155": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.3",
+      "3.NF.A.2",
+      "3.NF.A.1"
+    ]
+  },
+  "im_lesson_002096": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "fl_problem_001102": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "im_lesson_006907": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.1",
+      "K.OA.A.2",
+      "K.OA.A.4"
+    ]
+  },
+  "im_lesson_005099": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "im_lesson_009415": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "im_center_000502": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.1",
+      "3.NF.A.3"
+    ]
+  },
+  "im_task_000778": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_009435": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_006297": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.1",
+      "K.OA.A.2",
+      "K.OA.A.4"
+    ]
+  },
+  "im_practice_006282": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.A"
+    ],
+    "standard": [
+      "2.OA.A.1"
+    ]
+  },
+  "fl_problem_002120": {
+    "domain": [
+      "G-GPE"
+    ],
+    "cluster": [
+      "G-GPE.A"
+    ],
+    "standard": [
+      "G-GPE.A.1",
+      "G-GPE.A.3",
+      "G-GPE.A.2"
+    ]
+  },
+  "im_lesson_001139": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "fl_problem_000724": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_task_000319": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_task_001286": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_008628": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "im_lesson_009566": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_task_000830": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_task_000011": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "im_task_001189": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.3",
+      "4.NBT.A.2"
+    ]
+  },
+  "fl_problem_000191": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.3",
+      "3.NF.A.1"
+    ]
+  },
+  "im_lesson_006052": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_003485": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "im_lesson_004820": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "fl_problem_000835": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.1",
+      "6.RP.A.2",
+      "6.RP.A.3"
+    ]
+  },
+  "im_lesson_007517": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_009932": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "im_task_000701": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_005205": {
+    "domain": [
+      "3.OA"
+    ],
+    "cluster": [
+      "3.OA.D"
+    ],
+    "standard": [
+      "3.OA.D.8",
+      "3.OA.D.9"
+    ]
+  },
+  "im_task_001302": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.3",
+      "4.NBT.A.2"
+    ]
+  },
+  "fl_problem_001124": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "im_task_001128": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.1",
+      "3.NF.A.3"
+    ]
+  },
+  "fl_problem_000063": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.1",
+      "3.NF.A.3"
+    ]
+  },
+  "im_lesson_009406": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_task_000044": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "fl_problem_000602": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_007881": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "im_lesson_008054": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_004586": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.4",
+      "8.SP.A.3",
+      "8.SP.A.2"
+    ]
+  },
+  "im_lesson_004984": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.A"
+    ],
+    "standard": [
+      "2.OA.A.1"
+    ]
+  },
+  "fl_problem_001369": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.4",
+      "8.SP.A.3",
+      "8.SP.A.2"
+    ]
+  },
+  "fl_problem_001961": {
+    "domain": [
+      "G-GPE"
+    ],
+    "cluster": [
+      "G-GPE.A"
+    ],
+    "standard": [
+      "G-GPE.A.1",
+      "G-GPE.A.3",
+      "G-GPE.A.2"
+    ]
+  },
+  "im_lesson_002804": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_004153": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_task_000509": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.3",
+      "4.NBT.A.2"
+    ]
+  },
+  "fl_problem_000152": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.1",
+      "3.NF.A.2",
+      "3.NF.A.3"
+    ]
+  },
+  "im_lesson_009999": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_001759": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.1",
+      "3.NF.A.3"
+    ]
+  },
+  "im_lesson_007429": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.1",
+      "K.OA.A.4",
+      "K.OA.A.2"
+    ]
+  },
+  "fl_problem_001354": {
+    "domain": [
+      "8.EE"
+    ],
+    "cluster": [
+      "8.EE.B"
+    ],
+    "standard": [
+      "8.EE.B.6",
+      "8.EE.B.5"
+    ]
+  },
+  "im_lesson_004794": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_003427": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "im_task_000112": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.3",
+      "4.NBT.A.2"
+    ]
+  },
+  "fl_problem_001071": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "fl_problem_001196": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "fl_problem_001943": {
+    "domain": [
+      "A-REI"
+    ],
+    "cluster": [
+      "A-REI.A"
+    ],
+    "standard": [
+      "A-REI.A.2",
+      "A-REI.A.1"
+    ]
+  },
+  "im_task_001352": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_000946": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "fl_problem_000310": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.3",
+      "4.NBT.A.1",
+      "4.NBT.A.2"
+    ]
+  },
+  "im_task_000591": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_002393": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "fl_problem_001127": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.3",
+      "7.RP.A.1",
+      "7.RP.A.2"
+    ]
+  },
+  "im_task_000076": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_006313": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_008948": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "im_lesson_000521": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_practice_000031": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.A"
+    ],
+    "standard": [
+      "1.OA.A.2",
+      "1.OA.A.1"
+    ]
+  },
+  "im_task_001040": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_007270": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.1",
+      "K.OA.A.4",
+      "K.OA.A.3"
+    ]
+  },
+  "fl_problem_000771": {
+    "domain": [
+      "6.RP"
+    ],
+    "cluster": [
+      "6.RP.A"
+    ],
+    "standard": [
+      "6.RP.A.2",
+      "6.RP.A.1",
+      "6.RP.A.3"
+    ]
+  },
+  "im_center_000352": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.A"
+    ],
+    "standard": [
+      "5.OA.A.2",
+      "5.OA.A.1"
+    ]
+  },
+  "im_task_000366": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.2",
+      "3.NF.A.3",
+      "3.NF.A.1"
+    ]
+  },
+  "im_task_001205": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.5",
+      "4.NBT.B.6",
+      "4.NBT.B.4"
+    ]
+  },
+  "fl_problem_002099": {
+    "domain": [
+      "G-GPE"
+    ],
+    "cluster": [
+      "G-GPE.B"
+    ],
+    "standard": [
+      "G-GPE.B.4",
+      "G-GPE.B.5",
+      "G-GPE.B.7"
+    ]
+  },
+  "im_lesson_005566": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "fl_problem_000150": {
+    "domain": [
+      "3.NF"
+    ],
+    "cluster": [
+      "3.NF.A"
+    ],
+    "standard": [
+      "3.NF.A.1",
+      "3.NF.A.3",
+      "3.NF.A.2"
+    ]
+  },
+  "im_lesson_000327": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "im_center_000187": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.4",
+      "K.OA.A.1",
+      "K.OA.A.3"
+    ]
+  },
+  "im_lesson_008094": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.4",
+      "8.SP.A.3",
+      "8.SP.A.2"
+    ]
+  },
+  "fl_problem_000443": {
+    "domain": [
+      "4.NF"
+    ],
+    "cluster": [
+      "4.NF.C"
+    ],
+    "standard": [
+      "4.NF.C.6",
+      "4.NF.C.7",
+      "4.NF.C.5"
+    ]
+  },
+  "im_lesson_008601": {
+    "domain": [
+      "2.OA"
+    ],
+    "cluster": [
+      "2.OA.C"
+    ],
+    "standard": [
+      "2.OA.C.3",
+      "2.OA.C.4"
+    ]
+  },
+  "im_lesson_008922": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_lesson_000279": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_008748": {
+    "domain": [
+      "A-SSE"
+    ],
+    "cluster": [
+      "A-SSE.B"
+    ],
+    "standard": [
+      "A-SSE.B.4",
+      "A-SSE.B.3"
+    ]
+  },
+  "im_practice_002557": {
+    "domain": [
+      "4.NF"
+    ],
+    "cluster": [
+      "4.NF.B"
+    ],
+    "standard": [
+      "4.NF.B.4",
+      "4.NF.B.3"
+    ]
+  },
+  "fl_problem_001264": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.2",
+      "8.SP.A.3",
+      "8.SP.A.1"
+    ]
+  },
+  "im_lesson_009218": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_004772": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "im_lesson_007831": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_lesson_009716": {
+    "domain": [
+      "8.SP"
+    ],
+    "cluster": [
+      "8.SP.A"
+    ],
+    "standard": [
+      "8.SP.A.4",
+      "8.SP.A.3",
+      "8.SP.A.2"
+    ]
+  },
+  "fl_problem_000460": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_task_000332": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_005347": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_task_001200": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_008856": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_005211": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_task_001033": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "fl_problem_001853": {
+    "domain": [
+      "A-REI"
+    ],
+    "cluster": [
+      "A-REI.A"
+    ],
+    "standard": [
+      "A-REI.A.1",
+      "A-REI.A.2"
+    ]
+  },
+  "fl_problem_001067": {
+    "domain": [
+      "7.RP"
+    ],
+    "cluster": [
+      "7.RP.A"
+    ],
+    "standard": [
+      "7.RP.A.1",
+      "7.RP.A.3",
+      "7.RP.A.2"
+    ]
+  },
+  "fl_problem_001500": {
+    "domain": [
+      "A-REI"
+    ],
+    "cluster": [
+      "A-REI.A"
+    ],
+    "standard": [
+      "A-REI.A.1",
+      "A-REI.A.2"
+    ]
+  },
+  "fl_problem_000544": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.A"
+    ],
+    "standard": [
+      "5.OA.A.2",
+      "5.OA.A.1"
+    ]
+  },
+  "im_task_000785": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "fl_problem_001378": {
+    "domain": [
+      "8.EE"
+    ],
+    "cluster": [
+      "8.EE.B"
+    ],
+    "standard": [
+      "8.EE.B.5",
+      "8.EE.B.6"
+    ]
+  },
+  "im_task_000947": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_002288": {
+    "domain": [
+      "K.OA"
+    ],
+    "cluster": [
+      "K.OA.A"
+    ],
+    "standard": [
+      "K.OA.A.1",
+      "K.OA.A.4",
+      "K.OA.A.3"
+    ]
+  },
+  "im_task_001103": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.1",
+      "4.NBT.A.2",
+      "4.NBT.A.3"
+    ]
+  },
+  "im_lesson_002221": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  },
+  "im_lesson_008423": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.A"
+    ],
+    "standard": [
+      "4.NBT.A.2",
+      "4.NBT.A.1",
+      "4.NBT.A.3"
+    ]
+  },
+  "fl_problem_002041": {
+    "domain": [
+      "G-GPE"
+    ],
+    "cluster": [
+      "G-GPE.B"
+    ],
+    "standard": [
+      "G-GPE.B.4",
+      "G-GPE.B.5",
+      "G-GPE.B.7"
+    ]
+  },
+  "im_task_001072": {
+    "domain": [
+      "4.NBT"
+    ],
+    "cluster": [
+      "4.NBT.B"
+    ],
+    "standard": [
+      "4.NBT.B.6",
+      "4.NBT.B.5",
+      "4.NBT.B.4"
+    ]
+  },
+  "im_lesson_004553": {
+    "domain": [
+      "5.OA"
+    ],
+    "cluster": [
+      "5.OA.B"
+    ],
+    "standard": [
+      "5.OA.B.3"
+    ]
+  },
+  "im_lesson_004159": {
+    "domain": [
+      "1.OA"
+    ],
+    "cluster": [
+      "1.OA.B"
+    ],
+    "standard": [
+      "1.OA.B.3",
+      "1.OA.B.4"
+    ]
+  }
+}

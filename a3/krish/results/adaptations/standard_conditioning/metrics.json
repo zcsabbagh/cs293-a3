@@ -1,0 +1,66 @@
+{
+  "config": {
+    "dataset": "publisher_full",
+    "provider": "openai",
+    "model": "gpt-5.2",
+    "seed": 42,
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "max_test": 0,
+    "output_dir": "a3/krish/results/adaptations/standard_conditioning"
+  },
+  "split_sizes": {
+    "train": 1714,
+    "val": 214,
+    "test": 216
+  },
+  "evaluated_test_items": 216,
+  "error_count_codes_only": 0,
+  "error_count_codes_plus_descriptions": 0,
+  "metrics_codes_only": {
+    "standard": {
+      "precision": 0.24925373134328357,
+      "recall": 0.5566666666666666,
+      "f1": 0.3443298969072165,
+      "exact_match": 0.1574074074074074,
+      "total": 216
+    },
+    "cluster": {
+      "precision": 0.388646288209607,
+      "recall": 0.652014652014652,
+      "f1": 0.4870041039671683,
+      "exact_match": 0.35648148148148145,
+      "total": 216
+    },
+    "domain": {
+      "precision": 0.5696969696969697,
+      "recall": 0.7430830039525692,
+      "f1": 0.6449399656946827,
+      "exact_match": 0.5185185185185185,
+      "total": 216
+    }
+  },
+  "metrics_codes_plus_descriptions": {
+    "standard": {
+      "precision": 0.34205607476635513,
+      "recall": 0.61,
+      "f1": 0.43832335329341315,
+      "exact_match": 0.2037037037037037,
+      "total": 216
+    },
+    "cluster": {
+      "precision": 0.46715328467153283,
+      "recall": 0.7032967032967034,
+      "f1": 0.5614035087719298,
+      "exact_match": 0.39351851851851855,
+      "total": 216
+    },
+    "domain": {
+      "precision": 0.6137724550898204,
+      "recall": 0.8102766798418972,
+      "f1": 0.698466780238501,
+      "exact_match": 0.5740740740740741,
+      "total": 216
+    }
+  }
+}
