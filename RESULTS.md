@@ -1,94 +1,131 @@
-# Results
+# A3 Final Results (Detailed)
 
-## TF-IDF Baseline (Publisher Labels, 40 problems)
+This file contains the consolidated A3 metrics for both target relations:
 
-Top-k results using `benchmark.py` (ground truth = Addressing/Alignment):
+- `Addressing,Alignment` (standard alignment objective)
+- `Building On` (prerequisite objective)
 
-| k | Level | Precision | Recall | F1 | Exact |
-|---|-------|-----------|--------|----|-------|
-| 1 | Standard | 0.125 | 0.114 | 0.119 | 0.100 |
-| 1 | Cluster | 0.150 | 0.150 | 0.150 | 0.100 |
-| 1 | Domain | 0.175 | 0.184 | 0.179 | 0.150 |
-| 3 | Standard | 0.075 | 0.205 | 0.110 | 0.000 |
-| 3 | Cluster | 0.112 | 0.325 | 0.167 | 0.000 |
-| 3 | Domain | 0.153 | 0.447 | 0.228 | 0.000 |
-| 5 | Standard | 0.060 | 0.273 | 0.098 | 0.000 |
-| 5 | Cluster | 0.087 | 0.400 | 0.143 | 0.000 |
-| 5 | Domain | 0.112 | 0.500 | 0.184 | 0.000 |
+All metrics are from files in `a3/krish/results/`.
 
-### Notes
+## Evaluation Setup
 
-- Precision/recall tradeoff follows expectations: k=1 is more precise, k=5 is more recall-heavy.
-- Exact match is near-zero for TF-IDF, suggesting lexical overlap alone rarely recovers full standard sets.
-- The gap between domain- and standard-level scores shows most lexical matches land in the right neighborhood but miss fine-grained standards.
-- For reporting, k=3 is a reasonable middle ground (balanced recall with modest precision), while k=1 can be framed as a high-precision baseline.
+- Dataset: `publisher_full` from `mathfish_train.jsonl`
+- Split for most runs: `train/val/test = 0.8/0.1/0.1`
+- Level metrics reported at: `standard`, `cluster`, `domain`
+- Metrics: precision, recall, F1, exact match
 
-## LLM Benchmarks (Publisher Labels)
+## Addressing/Alignment Results
 
-Models used: Gemini `gemini-3.1-pro-preview`, OpenAI `gpt-5.2`, Anthropic `claude-sonnet-4-6`.
+Relations: `Addressing,Alignment`
 
-### OpenAI (gpt-5.2)
+Test sizes:
+- Baseline / Hierarchical / RAG / Conditioning: `n=216`
+- Fine-tuned RoBERTa: `n=198` (post label-frequency filtering)
 
-| Level | Precision | Recall | F1 | Exact |
-|-------|-----------|--------|----|-------|
-| Standard | 0.446 | 0.568 | 0.500 | 0.350 |
-| Cluster | 0.520 | 0.650 | 0.578 | 0.400 |
-| Domain | 0.587 | 0.711 | 0.643 | 0.500 |
+| Model | n | Std P | Std R | Std F1 | Std Exact | Cluster P | Cluster R | Cluster F1 | Cluster Exact | Domain P | Domain R | Domain F1 | Domain Exact |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| RoBERTa similarity baseline | 216 | 0.0494 | 0.1067 | 0.0675 | 0.0000 | 0.1039 | 0.2234 | 0.1419 | 0.0046 | 0.1877 | 0.3992 | 0.2554 | 0.0278 |
+| RoBERTa fine-tuned (`e2_light`) | 198 | 0.0539 | 0.1185 | 0.0741 | 0.0000 | 0.1336 | 0.2811 | 0.1811 | 0.0101 | 0.2372 | 0.4805 | 0.3176 | 0.0455 |
+| Adaptation 1: Hierarchical | 216 | 0.0331 | 0.0600 | 0.0427 | 0.0000 | 0.0972 | 0.0769 | 0.0859 | 0.0602 | 0.1852 | 0.1581 | 0.1706 | 0.1250 |
+| Adaptation 2: RAG few-shot | 216 | 0.4192 | 0.5967 | 0.4924 | 0.3009 | 0.5324 | 0.6630 | 0.5905 | 0.4491 | 0.6572 | 0.7352 | 0.6940 | 0.5880 |
+| Adaptation 3a: Conditioning (codes only) | 216 | 0.2493 | 0.5567 | 0.3443 | 0.1574 | 0.3886 | 0.6520 | 0.4870 | 0.3565 | 0.5697 | 0.7431 | 0.6449 | 0.5185 |
+| Adaptation 3b: Conditioning (codes+descriptions) | 216 | 0.3421 | 0.6100 | 0.4383 | 0.2037 | 0.4672 | 0.7033 | 0.5614 | 0.3935 | 0.6138 | 0.8103 | 0.6985 | 0.5741 |
 
-### Anthropic (claude-sonnet-4-6)
+Additional adaptation details:
+- Hierarchical best val decode: `k_domain=1, k_cluster=1, k_standard=3`
+- Fine-tuned RoBERTa best decode: `threshold=0.2` on Building On, `topk=3` on Addressing/Alignment (from run-specific metrics JSON)
 
-| Level | Precision | Recall | F1 | Exact |
-|-------|-----------|--------|----|-------|
-| Standard | 0.400 | 0.591 | 0.477 | 0.375 |
-| Cluster | 0.481 | 0.650 | 0.553 | 0.475 |
-| Domain | 0.521 | 0.658 | 0.581 | 0.525 |
+## Building On Results
 
-### Gemini (gemini-3.1-pro-preview)
+Relations: `Building On`
 
-| Level | Precision | Recall | F1 | Exact |
-|-------|-----------|--------|----|-------|
-| Standard | 0.682 | 0.341 | 0.455 | 0.400 |
-| Cluster | 0.714 | 0.375 | 0.492 | 0.400 |
-| Domain | 0.714 | 0.395 | 0.508 | 0.450 |
+Test sizes:
+- Baseline / Hierarchical / RAG / Conditioning: `n=75`
+- Fine-tuned RoBERTa: `n=69` (post label-frequency filtering)
 
-### Notes
+| Model | n | Std P | Std R | Std F1 | Std Exact | Cluster P | Cluster R | Cluster F1 | Cluster Exact | Domain P | Domain R | Domain F1 | Domain Exact |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| RoBERTa similarity baseline | 75 | 0.0133 | 0.0222 | 0.0167 | 0.0000 | 0.0300 | 0.0556 | 0.0390 | 0.0000 | 0.0601 | 0.1146 | 0.0789 | 0.0133 |
+| RoBERTa fine-tuned (`e2_light`) | 69 | 0.0221 | 0.2314 | 0.0403 | 0.0000 | 0.0329 | 0.2680 | 0.0586 | 0.0000 | 0.0532 | 0.2989 | 0.0903 | 0.0000 |
+| Adaptation 1: Hierarchical | 75 | 0.0105 | 0.0148 | 0.0123 | 0.0000 | 0.0267 | 0.0185 | 0.0219 | 0.0133 | 0.0400 | 0.0312 | 0.0351 | 0.0267 |
+| Adaptation 2: RAG few-shot | 75 | 0.0803 | 0.0815 | 0.0809 | 0.0267 | 0.1296 | 0.1296 | 0.1296 | 0.0667 | 0.1818 | 0.1875 | 0.1846 | 0.0800 |
+| Adaptation 3a: Conditioning (codes only) | 75 | 0.0495 | 0.0667 | 0.0568 | 0.0133 | 0.1022 | 0.1296 | 0.1143 | 0.0533 | 0.1636 | 0.1875 | 0.1748 | 0.0933 |
+| Adaptation 3b: Conditioning (codes+descriptions) | 75 | 0.0592 | 0.0741 | 0.0658 | 0.0133 | 0.1037 | 0.1296 | 0.1152 | 0.0667 | 0.1754 | 0.2083 | 0.1905 | 0.0800 |
 
-- GPT-5.2 leads on recall and F1 at all levels, with the strongest domain-level F1.
-- Gemini is notably more precise but less recall-heavy, suggesting tighter predictions.
-- Claude Sonnet 4.6 is consistently competitive, especially at cluster/domain granularity.
-- Exact match improves substantially vs TF-IDF, especially at higher granularity.
-- LLMs show a clear lift over TF-IDF on standard-level F1, indicating benefits beyond lexical overlap.
-- Precision/recall profiles differ by model; this can motivate a discussion about cost vs coverage (recall) tradeoffs.
-- If you need a single “best” model for downstream analysis, GPT-5.2 is the safest choice on aggregate F1.
+## Section 4 Descriptive Analyses (Full MathFish)
 
-Re-run if needed:
+Source: `a3/krish/results/descriptive/summary.json`
 
-```bash
-python3 llm_benchmark.py all --output-dir preds --results results/llm_results.json
-```
+- Problems scored: `13,065`
+- Predicted zero-count standards: `51`
+- Predicted prerequisite edge types: `554`
 
-## IRR (Krippendorff’s Alpha)
+### Analysis 1: Standards Coverage
 
-Computed with annotators: `krish`, `sera`, `teacher_buddy`, `zane`.
+Top predicted standards (count):
+- `N-RN.A.1` (2078)
+- `5.NF.B.3` (1902)
+- `7.EE.B.3` (1888)
+- `6.NS.A.1` (1830)
+- `A-REI.D.11` (1497)
+- `S-CP.A.4` (1473)
+- `8.SP.A.4` (1322)
+- `6.SP.B.5` (1030)
+- `4.NF.B.4c` (950)
+- `F-IF.C.8b` (912)
 
-| Level | Alpha | Items | Annotators |
-|-------|-------|-------|------------|
-| Standard | 0.263 | 1340 | 4 |
-| Cluster | 0.330 | 900 | 4 |
-| Domain | 0.413 | 600 | 4 |
-| Grade | 0.492 | 240 | 4 |
-| Standard (no grade, 7.NS.A.3=8.NS.A.3) | 0.284 | 1180 | 4 |
+Figure:
+- `a3/krish/figures/analysis1_coverage_heatmap.png`
 
-### Notes
+### Analysis 2: Prerequisite Chains
 
-- Agreement is highest at domain level and lowest at exact standard level, which is typical for fine-grained tagging.
-- Alpha values < 0.667 indicate only tentative agreement; flag this in the writeup and discuss ambiguity.
-- Grade-level agreement is higher than domain/standard, reinforcing that annotators align more on coarse structure than exact codes.
-- Standard (no grade) collapses grade-level differences (e.g., 7.NS.A.3 vs 8.NS.A.3). Agreement rises slightly vs exact standard, but remains low.
-- Low alpha at the standard level suggests either ambiguous items, differing interpretations of “Addressing,” or standards that are close in meaning.
-- Consider adding a short error analysis: list a few standards with frequent disagreement and explain why they are confusable.
-- This supports a narrative that the task is inherently fine-grained and that model evaluation should be reported at multiple levels.
+Top predicted prerequisite edges (`source -> target`, count):
+- `8.EE.A.2 -> N-RN.A.1` (2078)
+- `8.NS.A.1 -> N-RN.A.1` (2078)
+- `3.OA.A.2 -> 5.NF.B.3` (1902)
+- `3.OA.A.1 -> 5.NF.B.3` (1902)
+- `6.RP.A.3c -> 7.EE.B.3` (1888)
+- `6.EE.B.7 -> 7.EE.B.3` (1888)
+- `5.NF.B.7 -> 6.NS.A.1` (1830)
+- `5.NF.B.6 -> 6.NS.A.1` (1830)
+- `8.EE.C.8 -> A-REI.D.11` (1497)
+- `A-REI.D.10 -> A-REI.D.11` (1497)
 
-```bash
-python3 irr.py --output results/irr.json
-```
+Figure:
+- `a3/krish/figures/analysis2_prereq_graph.png`
+
+### Analysis 3: Publisher Comparison
+
+Publisher-level stats:
+- Illustrative Mathematics:
+  - Problems: `11,712`
+  - Avg predicted standards/problem: `4.7929`
+  - Multi-standard rate: `97.2678%`
+- Fishtank Learning:
+  - Problems: `1,353`
+  - Avg predicted standards/problem: `4.6977`
+  - Multi-standard rate: `95.7871%`
+
+Top predicted domains overall:
+- `5.NF`, `7.EE`, `6.NS`, `4.NF`, `6.RP`, `N-RN.A`, `S-CP.A`, `1.OA`, `3.OA`, `4.MD`
+
+Figures:
+- `a3/krish/figures/analysis3_publisher_comparison.png`
+- `a3/krish/figures/analysis3_publisher_comparison_domains.png`
+
+## Raw Metric File Index
+
+Addressing/Alignment:
+- `a3/krish/results/core/roberta_similarity_publisher_k3.json`
+- `a3/krish/results/core/roberta_ft_publisher_e2_light/metrics.json`
+- `a3/krish/results/adaptations/hierarchical/metrics.json`
+- `a3/krish/results/adaptations/rag_fewshot/metrics.json`
+- `a3/krish/results/adaptations/standard_conditioning/metrics.json`
+- `a3/krish/results/descriptive/summary.json`
+
+Building On:
+- `a3/krish/results/building_on/core/roberta_similarity_building_on_k3.json`
+- `a3/krish/results/building_on/core/roberta_ft_building_on_e2_light/metrics.json`
+- `a3/krish/results/building_on/adaptations/hierarchical/metrics.json`
+- `a3/krish/results/building_on/adaptations/rag_fewshot/metrics.json`
+- `a3/krish/results/building_on/adaptations/standard_conditioning/metrics.json`

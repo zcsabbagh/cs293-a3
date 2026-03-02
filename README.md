@@ -1,72 +1,125 @@
-# CS293 A3 - MathFish Standards Alignment
+# CS293 A3 - MathFish Standards and Prerequisites
 
-This repo contains:
+This repository is organized around two main docs:
 
-- A2 annotation + baseline tooling (root scripts)
-- A3 model/adaptation/descriptive-analysis work
+- `README.md` (project status, structure, rerun instructions)
+- `RESULTS.md` (full detailed metrics and outputs)
 
-## Where Krish's A3 Work Is
+## Project Scope (What Is Done)
 
-Primary A3 deliverables for Krish are organized under:
+### Section 2: Performance Analysis
 
-- [a3/krish/README.md](/Users/krishm/Desktop/School/cs293-a3/a3/krish/README.md)
-- `a3/krish/scripts/`
-- `a3/krish/results/`
-- `a3/krish/figures/`
+Completed for:
+- `Addressing,Alignment` labels
+- `Building On` labels (follow-up run)
 
-## Krish A3 Results Snapshot
+Implemented and executed:
+- RoBERTa similarity baseline
+- RoBERTa fine-tuning pipeline
 
-Latest refresh: all Section 3 adaptation runs were executed on `publisher_full` with `train/val/test = 0.8/0.1/0.1`, and Section 4 was run on all `13,065` problems.
+### Section 3: Performance Enhancement
 
-Performance Analysis (publisher-label evaluation):
+Completed for both relation settings above:
+- Adaptation 1: Hierarchical prediction (`domain -> cluster -> standard`)
+- Adaptation 2: Retrieval-augmented few-shot prompting
+- Adaptation 3: Standard-description conditioning (codes-only vs codes+descriptions)
 
-- RoBERTa similarity baseline standard F1: **0.0675**
-  - [roberta_similarity_publisher_k3.json](/Users/krishm/Desktop/School/cs293-a3/a3/krish/results/core/roberta_similarity_publisher_k3.json)
-- RoBERTa fine-tuned standard F1: **0.0741**
-  - [metrics.json](/Users/krishm/Desktop/School/cs293-a3/a3/krish/results/core/roberta_ft_publisher_e2_light/metrics.json)
+### Section 4: Descriptive Analyses at Scale
 
-Note: fine-tuned test size is `198` (post label-frequency filtering); baseline test size is `216`.
+Completed over full MathFish (`13,065` problems):
+- Standards coverage map
+- Prerequisite chain graph
+- Publisher comparison
 
-Adaptations completed:
+## Result Snapshot
 
-- Hierarchical prediction:
-  - Standard/Cluster/Domain F1: **0.0427 / 0.0859 / 0.1706** (`n=216`)
-  - [metrics.json](/Users/krishm/Desktop/School/cs293-a3/a3/krish/results/adaptations/hierarchical/metrics.json)
-- Retrieval-augmented few-shot prompting:
-  - Standard/Cluster/Domain F1: **0.4924 / 0.5905 / 0.6940** (`n=216`)
-  - [metrics.json](/Users/krishm/Desktop/School/cs293-a3/a3/krish/results/adaptations/rag_fewshot/metrics.json)
-- Standard description conditioning:
-  - Codes-only standard F1: **0.3443** (`n=216`)
-  - Codes+descriptions standard F1: **0.4383** (`n=216`)
-  - [metrics.json](/Users/krishm/Desktop/School/cs293-a3/a3/krish/results/adaptations/standard_conditioning/metrics.json)
+Detailed precision/recall/F1/exact tables are in `RESULTS.md`.
 
-Descriptive analyses (full MathFish, figures generated):
+### Addressing/Alignment (Standard F1)
 
-- Coverage heatmap: [analysis1_coverage_heatmap.png](/Users/krishm/Desktop/School/cs293-a3/a3/krish/figures/analysis1_coverage_heatmap.png)
-- Prerequisite graph: [analysis2_prereq_graph.png](/Users/krishm/Desktop/School/cs293-a3/a3/krish/figures/analysis2_prereq_graph.png)
-- Publisher comparison: [analysis3_publisher_comparison.png](/Users/krishm/Desktop/School/cs293-a3/a3/krish/figures/analysis3_publisher_comparison.png)
-- Summary: [summary.json](/Users/krishm/Desktop/School/cs293-a3/a3/krish/results/descriptive/summary.json)
-- Aggregate highlights:
-  - Problems scored: **13,065**
-  - Predicted zero-count standards: **51**
-  - Predicted prerequisite edge types: **554**
+- RoBERTa similarity baseline: `0.0675`
+- RoBERTa FT (`e2_light`): `0.0741`
+- Hierarchical: `0.0427`
+- RAG few-shot: `0.4924`
+- Conditioning (codes only): `0.3443`
+- Conditioning (codes+descriptions): `0.4383`
 
-Building On-only follow-up runs are also included at:
-- [RESULTS_SUMMARY.md](/Users/krishm/Desktop/School/cs293-a3/a3/krish/results/building_on/RESULTS_SUMMARY.md)
+### Building On (Standard F1)
 
-## Setup
+- RoBERTa similarity baseline: `0.0167`
+- RoBERTa FT (`e2_light`): `0.0403`
+- Hierarchical: `0.0123`
+- RAG few-shot: `0.0809`
+- Conditioning (codes only): `0.0568`
+- Conditioning (codes+descriptions): `0.0658`
+
+### Section 4 Highlights
+
+- Problems scored: `13,065`
+- Predicted zero-count standards: `51`
+- Predicted prerequisite edge types: `554`
+- Avg predicted standards/problem:
+  - Illustrative Mathematics: `4.7929`
+  - Fishtank Learning: `4.6977`
+
+## Main Artifacts
+
+### Scripts
+
+- `a3/krish/scripts/roberta_similarity.py`
+- `a3/krish/scripts/train_roberta_ft.py`
+- `a3/krish/scripts/adaptation_hierarchical.py`
+- `a3/krish/scripts/adaptation_rag_fewshot.py`
+- `a3/krish/scripts/adaptation_standard_conditioning.py`
+- `a3/krish/scripts/descriptive_analyses.py`
+
+### Addressing/Alignment Results
+
+- `a3/krish/results/core/`
+- `a3/krish/results/adaptations/`
+- `a3/krish/results/descriptive/`
+
+### Building On Results
+
+- `a3/krish/results/building_on/core/`
+- `a3/krish/results/building_on/adaptations/`
+
+### Figures
+
+- `a3/krish/figures/analysis1_coverage_heatmap.png`
+- `a3/krish/figures/analysis2_prereq_graph.png`
+- `a3/krish/figures/analysis3_publisher_comparison.png`
+- `a3/krish/figures/analysis3_publisher_comparison_domains.png`
+
+## Reproduction
+
+### Addressing/Alignment (`relations="Addressing,Alignment"`)
 
 ```bash
-python3 -m pip install --user torch transformers datasets scikit-learn accelerate matplotlib networkx pandas
+python3 a3/krish/scripts/roberta_similarity.py --dataset publisher_full --relations "Addressing,Alignment" --top-k 3 --grade-filter --out-preds a3/krish/results/core/roberta_similarity_publisher_k3.jsonl --out-metrics a3/krish/results/core/roberta_similarity_publisher_k3.json
+python3 a3/krish/scripts/train_roberta_ft.py --dataset publisher_full --relations "Addressing,Alignment" --epochs 2 --output-dir a3/krish/results/core/roberta_ft_publisher_e2_light
+python3 a3/krish/scripts/adaptation_hierarchical.py --relations "Addressing,Alignment" --output-dir a3/krish/results/adaptations/hierarchical
+python3 a3/krish/scripts/adaptation_rag_fewshot.py --dataset publisher_full --relations "Addressing,Alignment" --provider openai --model gpt-5.2 --train-ratio 0.8 --val-ratio 0.1 --max-test 0 --output-dir a3/krish/results/adaptations/rag_fewshot
+python3 a3/krish/scripts/adaptation_standard_conditioning.py --dataset publisher_full --relations "Addressing,Alignment" --provider openai --model gpt-5.2 --train-ratio 0.8 --val-ratio 0.1 --max-test 0 --output-dir a3/krish/results/adaptations/standard_conditioning
 ```
 
-## Legacy Root Workflows
-
-A2/annotation scripts at repo root are still available:
+### Building On (`relations="Building On"`)
 
 ```bash
-python3 annotate.py --name <your_name>
-python3 irr.py --output results/irr.json
-python3 benchmark.py tfidf --k 3 --output preds/tfidf_k3.jsonl
-python3 llm_benchmark.py all --output-dir preds --results results/llm_results.json
+python3 a3/krish/scripts/roberta_similarity.py --dataset publisher_full --relations "Building On" --top-k 3 --grade-filter --out-preds a3/krish/results/building_on/core/roberta_similarity_building_on_k3.jsonl --out-metrics a3/krish/results/building_on/core/roberta_similarity_building_on_k3.json
+python3 a3/krish/scripts/train_roberta_ft.py --dataset publisher_full --relations "Building On" --epochs 2 --output-dir a3/krish/results/building_on/core/roberta_ft_building_on_e2_light
+python3 a3/krish/scripts/adaptation_hierarchical.py --relations "Building On" --output-dir a3/krish/results/building_on/adaptations/hierarchical
+python3 a3/krish/scripts/adaptation_rag_fewshot.py --dataset publisher_full --relations "Building On" --provider openai --model gpt-5.2 --train-ratio 0.8 --val-ratio 0.1 --max-test 0 --output-dir a3/krish/results/building_on/adaptations/rag_fewshot
+python3 a3/krish/scripts/adaptation_standard_conditioning.py --dataset publisher_full --relations "Building On" --provider openai --model gpt-5.2 --train-ratio 0.8 --val-ratio 0.1 --max-test 0 --output-dir a3/krish/results/building_on/adaptations/standard_conditioning
 ```
+
+### Descriptive Analyses
+
+```bash
+python3 a3/krish/scripts/descriptive_analyses.py --data-path mathfish_train.jsonl
+```
+
+## Environment Notes
+
+- LLM adaptations require API keys in `.env` (`OPENAI_API_KEY`, optionally other providers).
+- Large source dataset `mathfish_train.jsonl` is intentionally gitignored.
