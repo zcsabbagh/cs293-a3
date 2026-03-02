@@ -1,0 +1,49 @@
+{
+  "config": {
+    "dataset": "publisher_full",
+    "provider": "openai",
+    "model": "gpt-5.2",
+    "seed": 42,
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "relations": "Building On",
+    "k_retrieval": 3,
+    "max_test": 0,
+    "embed_model": "roberta-base",
+    "batch_size": 16,
+    "max_length": 256,
+    "device": "auto",
+    "sleep_seconds": 0.1,
+    "output_dir": "a3/krish/results/building_on/adaptations/rag_fewshot"
+  },
+  "split_sizes": {
+    "train": 584,
+    "val": 72,
+    "test": 75
+  },
+  "evaluated_test_items": 75,
+  "error_count": 0,
+  "metrics": {
+    "standard": {
+      "precision": 0.08029197080291971,
+      "recall": 0.08148148148148149,
+      "f1": 0.08088235294117646,
+      "exact_match": 0.02666666666666667,
+      "total": 75
+    },
+    "cluster": {
+      "precision": 0.12962962962962962,
+      "recall": 0.12962962962962962,
+      "f1": 0.12962962962962962,
+      "exact_match": 0.06666666666666667,
+      "total": 75
+    },
+    "domain": {
+      "precision": 0.18181818181818182,
+      "recall": 0.1875,
+      "f1": 0.1846153846153846,
+      "exact_match": 0.08,
+      "total": 75
+    }
+  }
+}

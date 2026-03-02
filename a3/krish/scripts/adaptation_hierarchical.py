@@ -36,6 +36,7 @@ from a3.utils import (
     load_publisher_examples,
     load_standards,
     map_level,
+    parse_relations_arg,
     parse_grade_key,
     split_examples,
     standard_levels,
@@ -266,6 +267,11 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--train-ratio", type=float, default=0.8)
     parser.add_argument("--val-ratio", type=float, default=0.1)
+    parser.add_argument(
+        "--relations",
+        default="Addressing,Alignment",
+        help="Comma-separated relation labels to use as gold targets.",
+    )
     parser.add_argument("--device", default="auto", help="auto|cpu|cuda|mps")
     parser.add_argument("--max-examples", type=int, default=0)
     parser.add_argument("--disable-grade-filter", action="store_true")
@@ -279,7 +285,8 @@ def main() -> None:
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    examples = load_publisher_examples("mathfish_train.jsonl")
+    relations = parse_relations_arg(args.relations)
+    examples = load_publisher_examples("mathfish_train.jsonl", relations=relations)
     if args.max_examples > 0:
         examples = examples[: args.max_examples]
     split = split_examples(

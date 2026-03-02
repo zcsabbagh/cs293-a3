@@ -1,0 +1,67 @@
+{
+  "config": {
+    "dataset": "publisher_full",
+    "provider": "openai",
+    "model": "gpt-5.2",
+    "seed": 42,
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "relations": "Building On",
+    "max_test": 0,
+    "output_dir": "a3/krish/results/building_on/adaptations/standard_conditioning"
+  },
+  "split_sizes": {
+    "train": 584,
+    "val": 72,
+    "test": 75
+  },
+  "evaluated_test_items": 75,
+  "error_count_codes_only": 0,
+  "error_count_codes_plus_descriptions": 0,
+  "metrics_codes_only": {
+    "standard": {
+      "precision": 0.04945054945054945,
+      "recall": 0.06666666666666667,
+      "f1": 0.056782334384858045,
+      "exact_match": 0.013333333333333334,
+      "total": 75
+    },
+    "cluster": {
+      "precision": 0.10218978102189781,
+      "recall": 0.12962962962962962,
+      "f1": 0.11428571428571427,
+      "exact_match": 0.05333333333333334,
+      "total": 75
+    },
+    "domain": {
+      "precision": 0.16363636363636364,
+      "recall": 0.1875,
+      "f1": 0.17475728155339806,
+      "exact_match": 0.09333333333333334,
+      "total": 75
+    }
+  },
+  "metrics_codes_plus_descriptions": {
+    "standard": {
+      "precision": 0.05917159763313609,
+      "recall": 0.07407407407407407,
+      "f1": 0.06578947368421052,
+      "exact_match": 0.013333333333333334,
+      "total": 75
+    },
+    "cluster": {
+      "precision": 0.1037037037037037,
+      "recall": 0.12962962962962962,
+      "f1": 0.11522633744855966,
+      "exact_match": 0.06666666666666667,
+      "total": 75
+    },
+    "domain": {
+      "precision": 0.17543859649122806,
+      "recall": 0.20833333333333334,
+      "f1": 0.19047619047619047,
+      "exact_match": 0.08,
+      "total": 75
+    }
+  }
+}

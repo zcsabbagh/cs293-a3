@@ -39,6 +39,7 @@ from a3.utils import (
     load_assigned_problem_examples,
     load_publisher_examples,
     load_standard_descriptions,
+    parse_relations_arg,
     parse_grade_key,
     split_examples,
     write_json,
@@ -100,11 +101,12 @@ def topk_predict(
     return [label_ids[i] for i in idx]
 
 
-def load_examples(dataset: str):
+def load_examples(dataset: str, relations_csv: str):
+    relations = parse_relations_arg(relations_csv)
     if dataset == "publisher_full":
-        return load_publisher_examples("mathfish_train.jsonl")
+        return load_publisher_examples("mathfish_train.jsonl", relations=relations)
     if dataset == "assigned":
-        return load_assigned_problem_examples("annotations/problems.json")
+        return load_assigned_problem_examples("annotations/problems.json", relations=relations)
     raise ValueError(f"Unknown dataset: {dataset}")
 
 
@@ -120,13 +122,18 @@ def main() -> None:
     parser.add_argument("--val-ratio", type=float, default=0.1)
     parser.add_argument("--eval-split", choices=["train", "val", "test"], default="test")
     parser.add_argument("--max-examples", type=int, default=0, help="0 = all")
+    parser.add_argument(
+        "--relations",
+        default="Addressing,Alignment",
+        help="Comma-separated relation labels to use as gold targets.",
+    )
     parser.add_argument("--grade-filter", action="store_true")
     parser.add_argument("--device", default="auto", help="auto|cpu|cuda|mps")
     parser.add_argument("--out-preds", default="preds/roberta_similarity.jsonl")
     parser.add_argument("--out-metrics", default="results/roberta_similarity.json")
     args = parser.parse_args()
 
-    examples = load_examples(args.dataset)
+    examples = load_examples(args.dataset, args.relations)
     if args.max_examples > 0:
         examples = examples[: args.max_examples]
     if len(examples) < 10:

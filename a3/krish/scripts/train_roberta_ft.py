@@ -37,6 +37,7 @@ from a3.utils import (
     is_standard_in_grade_scope,
     load_assigned_problem_examples,
     load_publisher_examples,
+    parse_relations_arg,
     parse_grade_key,
     split_examples,
     write_json,
@@ -44,11 +45,12 @@ from a3.utils import (
 )
 
 
-def load_examples(dataset: str) -> List[Example]:
+def load_examples(dataset: str, relations_csv: str) -> List[Example]:
+    relations = parse_relations_arg(relations_csv)
     if dataset == "publisher_full":
-        return load_publisher_examples("mathfish_train.jsonl")
+        return load_publisher_examples("mathfish_train.jsonl", relations=relations)
     if dataset == "assigned":
-        return load_assigned_problem_examples("annotations/problems.json")
+        return load_assigned_problem_examples("annotations/problems.json", relations=relations)
     raise ValueError(f"Unknown dataset: {dataset}")
 
 
@@ -296,6 +298,11 @@ def main() -> None:
     parser.add_argument("--val-ratio", type=float, default=0.1)
     parser.add_argument("--min-label-frequency", type=int, default=2)
     parser.add_argument("--max-examples", type=int, default=0, help="0 = all")
+    parser.add_argument(
+        "--relations",
+        default="Addressing,Alignment",
+        help="Comma-separated relation labels to use as gold targets.",
+    )
     parser.add_argument("--max-length", type=int, default=256)
     parser.add_argument("--learning-rate", type=float, default=2e-5)
     parser.add_argument("--weight-decay", type=float, default=0.01)
@@ -333,7 +340,7 @@ def main() -> None:
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    examples = load_examples(args.dataset)
+    examples = load_examples(args.dataset, args.relations)
     if args.max_examples > 0:
         examples = examples[: args.max_examples]
     if len(examples) < 20:

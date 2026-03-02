@@ -1,0 +1,81 @@
+{
+  "config": {
+    "model_name": "roberta-base",
+    "batch_size": 16,
+    "max_length": 256,
+    "seed": 42,
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "relations": "Building On",
+    "device": "auto",
+    "max_examples": 0,
+    "disable_grade_filter": false,
+    "output_dir": "a3/krish/results/building_on/adaptations/hierarchical",
+    "epochs_note": ""
+  },
+  "split_sizes": {
+    "train": 584,
+    "val": 72,
+    "test": 75
+  },
+  "best_val_decoding": {
+    "k_domain": 1,
+    "k_cluster": 1,
+    "k_standard": 3,
+    "metrics": {
+      "domain": {
+        "precision": 0.06944444444444445,
+        "recall": 0.050505050505050504,
+        "f1": 0.058479532163742694,
+        "exact_match": 0.027777777777777776,
+        "total": 72
+      },
+      "cluster": {
+        "precision": 0.06944444444444445,
+        "recall": 0.04424778761061947,
+        "f1": 0.05405405405405406,
+        "exact_match": 0.027777777777777776,
+        "total": 72
+      },
+      "standard": {
+        "precision": 0.03977272727272727,
+        "recall": 0.04861111111111111,
+        "f1": 0.043750000000000004,
+        "exact_match": 0.0,
+        "total": 72
+      }
+    }
+  },
+  "test_metrics": {
+    "domain": {
+      "precision": 0.04,
+      "recall": 0.03125,
+      "f1": 0.03508771929824561,
+      "exact_match": 0.02666666666666667,
+      "total": 75
+    },
+    "cluster": {
+      "precision": 0.02666666666666667,
+      "recall": 0.018518518518518517,
+      "f1": 0.02185792349726776,
+      "exact_match": 0.013333333333333334,
+      "total": 75
+    },
+    "standard": {
+      "precision": 0.010526315789473684,
+      "recall": 0.014814814814814815,
+      "f1": 0.01230769230769231,
+      "exact_match": 0.0,
+      "total": 75
+    }
+  },
+  "error_propagation": {
+    "n": 75,
+    "wrong_domain_count": 73,
+    "wrong_standard_count": 75,
+    "wrong_standard_and_wrong_domain_count": 73,
+    "p_wrong_domain": 0.9733333333333334,
+    "p_wrong_standard": 1.0,
+    "p_wrong_standard_given_wrong_domain": 1.0
+  }
+}

@@ -59,6 +59,21 @@ Adaptation summary (standard-level F1):
   - Codes only: `0.3443` (test, publisher split, n=216)
   - Codes + descriptions: `0.4383` (test, publisher split, n=216)
 
+### Building On Runs (Requested Follow-up)
+
+I also ran the same Section 2/3 pipeline using only `Building On` labels.
+
+- Outputs:
+  - `results/building_on/core/`
+  - `results/building_on/adaptations/`
+  - `results/building_on/RESULTS_SUMMARY.md`
+- Key Building On standard F1:
+  - Baseline: `0.0167`
+  - Fine-tuned: `0.0403`
+  - Hierarchical: `0.0123`
+  - RAG few-shot: `0.0809`
+  - Conditioning (codes -> codes+desc): `0.0568` -> `0.0658`
+
 ### 4) Descriptive Analyses (3 at Scale)
 
 Generated with:
@@ -105,4 +120,14 @@ python3 a3/krish/scripts/adaptation_hierarchical.py
 python3 a3/krish/scripts/adaptation_rag_fewshot.py --dataset publisher_full --provider openai --model gpt-5.2 --train-ratio 0.8 --val-ratio 0.1 --max-test 0
 python3 a3/krish/scripts/adaptation_standard_conditioning.py --dataset publisher_full --provider openai --model gpt-5.2 --train-ratio 0.8 --val-ratio 0.1 --max-test 0
 python3 a3/krish/scripts/descriptive_analyses.py --data-path mathfish_train.jsonl
+```
+
+Building On reruns:
+
+```bash
+python3 a3/krish/scripts/roberta_similarity.py --dataset publisher_full --relations "Building On" --top-k 3 --grade-filter --out-preds a3/krish/results/building_on/core/roberta_similarity_building_on_k3.jsonl --out-metrics a3/krish/results/building_on/core/roberta_similarity_building_on_k3.json
+python3 a3/krish/scripts/train_roberta_ft.py --dataset publisher_full --relations "Building On" --epochs 2 --output-dir a3/krish/results/building_on/core/roberta_ft_building_on_e2_light
+python3 a3/krish/scripts/adaptation_hierarchical.py --relations "Building On" --output-dir a3/krish/results/building_on/adaptations/hierarchical
+python3 a3/krish/scripts/adaptation_rag_fewshot.py --dataset publisher_full --relations "Building On" --provider openai --model gpt-5.2 --train-ratio 0.8 --val-ratio 0.1 --max-test 0 --output-dir a3/krish/results/building_on/adaptations/rag_fewshot
+python3 a3/krish/scripts/adaptation_standard_conditioning.py --dataset publisher_full --relations "Building On" --provider openai --model gpt-5.2 --train-ratio 0.8 --val-ratio 0.1 --max-test 0 --output-dir a3/krish/results/building_on/adaptations/standard_conditioning
 ```

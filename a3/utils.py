@@ -16,6 +16,16 @@ from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple, Union
 PUBLISHER_RELATIONS = {"Addressing", "Alignment"}
 
 
+def parse_relations_arg(relations_csv: Optional[str], default: Optional[Set[str]] = None) -> Set[str]:
+    """Parse a comma-separated relation list into a normalized set."""
+    if relations_csv is None:
+        return set(default or PUBLISHER_RELATIONS)
+    out = {x.strip() for x in relations_csv.split(",") if x.strip()}
+    if not out:
+        raise ValueError("No relations provided after parsing --relations.")
+    return out
+
+
 @dataclass(frozen=True)
 class Example:
     """A single labeled math problem example."""

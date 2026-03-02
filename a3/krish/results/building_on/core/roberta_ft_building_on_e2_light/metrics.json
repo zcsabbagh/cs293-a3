@@ -1,0 +1,88 @@
+{
+  "config": {
+    "dataset": "publisher_full",
+    "model_name": "roberta-base",
+    "output_dir": "a3/krish/results/building_on/core/roberta_ft_building_on_e2_light",
+    "seed": 42,
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "min_label_frequency": 2,
+    "max_examples": 0,
+    "relations": "Building On",
+    "max_length": 256,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 8,
+    "epochs": 2,
+    "warmup_ratio": 0.1,
+    "device": "auto",
+    "gradient_accumulation": 1,
+    "save_model": false,
+    "keep_checkpoints": false,
+    "threshold_low": 0.05,
+    "threshold_high": 0.95,
+    "threshold_step": 0.05,
+    "max_top_k": 5,
+    "disable_grade_filter": false
+  },
+  "label_count": 156,
+  "split_sizes_raw": {
+    "train": 584,
+    "val": 72,
+    "test": 75
+  },
+  "split_sizes_used": {
+    "train": 544,
+    "val": 61,
+    "test": 69
+  },
+  "best_decode_mode": "threshold",
+  "best_decode_param": 0.2,
+  "val_metrics_best_decode": {
+    "standard": {
+      "precision": 0.03525954946131244,
+      "recall": 0.3025210084033613,
+      "f1": 0.06315789473684211,
+      "exact_match": 0.0,
+      "total": 61
+    },
+    "cluster": {
+      "precision": 0.05396290050590219,
+      "recall": 0.3404255319148936,
+      "f1": 0.09315866084425035,
+      "exact_match": 0.0,
+      "total": 61
+    },
+    "domain": {
+      "precision": 0.08086253369272237,
+      "recall": 0.3614457831325301,
+      "f1": 0.13215859030837004,
+      "exact_match": 0.0,
+      "total": 61
+    }
+  },
+  "test_metrics_best_decode": {
+    "standard": {
+      "precision": 0.022099447513812154,
+      "recall": 0.23140495867768596,
+      "f1": 0.040345821325648415,
+      "exact_match": 0.0,
+      "total": 69
+    },
+    "cluster": {
+      "precision": 0.03291139240506329,
+      "recall": 0.26804123711340205,
+      "f1": 0.05862457722660654,
+      "exact_match": 0.0,
+      "total": 69
+    },
+    "domain": {
+      "precision": 0.053169734151329244,
+      "recall": 0.2988505747126437,
+      "f1": 0.09027777777777778,
+      "exact_match": 0.0,
+      "total": 69
+    }
+  },
+  "num_error_examples_test": 69
+}

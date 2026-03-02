@@ -33,6 +33,7 @@ from a3.utils import (
     load_assigned_problem_examples,
     load_publisher_examples,
     load_standards,
+    parse_relations_arg,
     parse_grade_key,
     split_examples,
     write_json,
@@ -138,11 +139,12 @@ def call_model(provider: str, model: str, prompt: str) -> str:
     return llm_benchmark.request_with_retries(do_call)
 
 
-def load_examples(dataset: str):
+def load_examples(dataset: str, relations_csv: str):
+    relations = parse_relations_arg(relations_csv)
     if dataset == "publisher_full":
-        return load_publisher_examples("mathfish_train.jsonl")
+        return load_publisher_examples("mathfish_train.jsonl", relations=relations)
     if dataset == "assigned":
-        return load_assigned_problem_examples("annotations/problems.json")
+        return load_assigned_problem_examples("annotations/problems.json", relations=relations)
     raise ValueError(f"Unknown dataset: {dataset}")
 
 
@@ -154,6 +156,11 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--train-ratio", type=float, default=0.7)
     parser.add_argument("--val-ratio", type=float, default=0.15)
+    parser.add_argument(
+        "--relations",
+        default="Addressing,Alignment",
+        help="Comma-separated relation labels to use as gold targets.",
+    )
     parser.add_argument("--k-retrieval", type=int, default=3)
     parser.add_argument("--max-test", type=int, default=0, help="0 = full test split")
     parser.add_argument("--embed-model", default="roberta-base")
@@ -178,7 +185,7 @@ def main() -> None:
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    examples = load_examples(args.dataset)
+    examples = load_examples(args.dataset, args.relations)
     split = split_examples(
         examples,
         train_ratio=args.train_ratio,
